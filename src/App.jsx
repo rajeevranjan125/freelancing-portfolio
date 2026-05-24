@@ -4,7 +4,6 @@ import ScrollReveal from './components/ScrollReveal';
 import TiltCard from './components/TiltCard';
 import SimulatorModal from './components/SimulatorModal';
 import SchedulerModal from './components/SchedulerModal';
-import ContactForm from './components/ContactForm';
 
 export default function App() {
 
@@ -14,6 +13,7 @@ export default function App() {
   const [calcUsers, setCalcUsers] = useState(2500);
   const [showScheduler, setShowScheduler] = useState(false);
   const [demoProject, setDemoProject] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleOpenScheduler = () => {
     if (PORTFOLIO_DATA.personal.calendly) {
@@ -22,10 +22,6 @@ export default function App() {
       setShowScheduler(true);
     }
   };
-
-  // Form Success Lead state
-  const [showFormSuccess, setShowFormSuccess] = useState(false);
-  const [submittedLead, setSubmittedLead] = useState(null);
 
 
 
@@ -65,12 +61,6 @@ export default function App() {
   };
 
   const calcInfo = getCalcStats(calcUsers);
-
-  // Form submit handler
-  const handleFormSubmitSuccess = (data) => {
-    setSubmittedLead(data);
-    setShowFormSuccess(true);
-  };
 
   // Filter projects helper
   const filteredProjects = selectedFilter === "All"
@@ -150,7 +140,7 @@ export default function App() {
             <a href="#why-me" className="text-sm font-medium text-slate-300 hover:text-cyanNeon transition-colors">Why Me</a>
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <div className="hidden lg:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-semibold text-emerald-400 relative">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
               <span className="w-2 h-2 rounded-full bg-emerald-400 absolute"></span>
@@ -159,13 +149,54 @@ export default function App() {
 
             <button 
               onClick={handleOpenScheduler}
-              className="px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-cyanNeon/50 hover:bg-cyanNeon/10 text-sm font-semibold transition-all duration-300 shadow-sm"
+              className="hidden sm:inline-block px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-cyanNeon/50 hover:bg-cyanNeon/10 text-sm font-semibold transition-all duration-300 shadow-sm"
+            >
+              Book a Call
+            </button>
+
+            {/* Hamburger Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+              aria-label="Toggle mobile menu"
+            >
+              {mobileMenuOpen ? (
+                <svg className="w-5.5 h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-5.5 h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Menu Panel */}
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed top-20 left-0 right-0 z-40 border-b border-white/5 bg-slate-950/95 backdrop-blur-lg p-6 space-y-4 shadow-xl flex flex-col">
+          <a href="#services" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-slate-300 hover:text-cyanNeon transition-colors py-2 border-b border-white/5">Services</a>
+          <a href="#strategy" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-slate-300 hover:text-cyanNeon transition-colors py-2 border-b border-white/5">Cloud Strategy</a>
+          <a href="#projects" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-slate-300 hover:text-cyanNeon transition-colors py-2 border-b border-white/5">Projects</a>
+          <a href="#calculator" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-slate-300 hover:text-cyanNeon transition-colors py-2 border-b border-white/5">Cost Calculator</a>
+          <a href="#why-me" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-slate-300 hover:text-cyanNeon transition-colors py-2">Why Me</a>
+          
+          <div className="pt-4 border-t border-white/5 flex flex-col gap-3">
+            <span className="text-xs text-slate-400 font-semibold text-center">{PORTFOLIO_DATA.personal.availability}</span>
+            <button 
+              onClick={() => {
+                setMobileMenuOpen(false);
+                handleOpenScheduler();
+              }}
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-cyanNeon to-blueElectric text-white text-sm font-bold shadow-md text-center"
             >
               Book a Call
             </button>
           </div>
         </div>
-      </header>
+      )}
 
       {/* Hero Section */}
       <section className="relative pt-16 pb-24 md:pt-28 md:pb-36 max-w-7xl mx-auto px-6 overflow-hidden">
@@ -681,66 +712,52 @@ export default function App() {
         </ScrollReveal>
       </section>
 
-      {/* Lead Capture Contact Form */}
-      <section id="contact" className="py-24 max-w-5xl mx-auto px-6 border-t border-white/5 relative">
-        <div className="grid md:grid-cols-12 gap-12 items-start">
-          
-          <div className="md:col-span-4 space-y-6">
-            <ScrollReveal>
-              <h2 className="text-3xl font-extrabold text-white tracking-tight">
-                Let's Build Your Infrastructure
-              </h2>
-              <p className="text-slate-300 text-xs font-semibold leading-relaxed mt-3">
-                📍 {PORTFOLIO_DATA.personal.location}
-              </p>
-              <p className="text-slate-400 text-xs leading-relaxed mt-1">
-                💼 {PORTFOLIO_DATA.personal.remoteAvailability}
-              </p>
-              <div className="mt-4 space-y-2 text-xs font-semibold text-slate-300">
-                <a href={`mailto:${PORTFOLIO_DATA.personal.email}`} className="flex items-center gap-2 hover:text-cyanNeon transition-colors">
-                  📧 {PORTFOLIO_DATA.personal.email}
-                </a>
-                <a href={PORTFOLIO_DATA.personal.whatsapp} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-emerald-400 transition-colors">
-                  💬 {PORTFOLIO_DATA.personal.phone} (WhatsApp)
-                </a>
-              </div>
-              <p className="text-slate-400 text-xs leading-relaxed mt-4">
-                Submit the form to request a custom estimate, or book your meeting directly using the scheduler:
-              </p>
-              <button
-                onClick={handleOpenScheduler}
-                className="mt-3 w-full sm:w-auto px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-cyanNeon/50 hover:bg-cyanNeon/10 text-cyanNeon font-bold text-xs transition-all duration-300 flex items-center justify-center gap-2"
-              >
-                📅 Open Strategy Call Scheduler
-              </button>
-            </ScrollReveal>
+      {/* Ready to Scale Section (Centered CTA) */}
+      <section id="contact" className="py-24 max-w-4xl mx-auto px-6 border-t border-white/5 relative text-center">
+        <ScrollReveal>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
+            Ready to Build Your Cloud Infrastructure?
+          </h2>
+          <p className="text-slate-400 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+            Let's design a cost-optimized, highly scalable system tailored to your startup. Schedule a free 30-minute architecture strategy session or reach out directly.
+          </p>
 
-            <div className="space-y-4 pt-4 border-t border-white/5">
-              <div className="flex items-center gap-3 text-xs text-slate-300">
-                <span className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-[10px] font-bold">✓</span>
-                <span>24h response guaranteed</span>
-              </div>
-              <div className="flex items-center gap-3 text-xs text-slate-300">
-                <span className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-[10px] font-bold">✓</span>
-                <span>Free 30-min architecture review</span>
-              </div>
-              <div className="flex items-center gap-3 text-xs text-slate-300">
-                <span className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-[10px] font-bold">✓</span>
-                <span>No upfront discovery fee</span>
-              </div>
-              <div className="flex items-center gap-3 text-xs text-slate-300">
-                <span className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-[10px] font-bold">✓</span>
-                <span>NDAs signed before call</span>
-              </div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-12">
+            <button
+              onClick={handleOpenScheduler}
+              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyanNeon to-blueElectric text-white font-bold text-base hover:opacity-95 hover:shadow-[0_0_25px_rgba(6,182,212,0.4)] transition-all duration-300 text-center flex items-center justify-center gap-2"
+            >
+              📅 Schedule Strategy Call
+            </button>
+            <a
+              href={PORTFOLIO_DATA.personal.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-emerald-500/10 text-white font-bold text-base transition-all duration-300 text-center flex items-center justify-center gap-2"
+            >
+              💬 Chat on WhatsApp
+            </a>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-white/5 max-w-3xl mx-auto text-left text-xs text-slate-400">
+            <div className="flex items-center gap-2.5">
+              <span className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-[10px] font-bold">✓</span>
+              <span>24h Response</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <span className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-[10px] font-bold">✓</span>
+              <span>Free 30-min Review</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <span className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-[10px] font-bold">✓</span>
+              <span>No Discovery Fee</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <span className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-[10px] font-bold">✓</span>
+              <span>NDAs Signed</span>
             </div>
           </div>
-
-          <div className="md:col-span-8">
-            <ScrollReveal delay={150}>
-              <ContactForm onSubmitSuccess={handleFormSubmitSuccess} />
-            </ScrollReveal>
-          </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Footer Details */}
@@ -837,32 +854,7 @@ export default function App() {
         <span className="hidden sm:inline">Schedule Strategy Call</span>
       </button>
 
-      {/* Lead Form Success Modal Overlay */}
-      {showFormSuccess && submittedLead && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-md p-8 rounded-3xl glass-panel text-center border-white/10 relative shadow-2xl animate-scale-in">
-            <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-6 text-3xl font-extrabold">
-              ✓
-            </div>
-            <h3 className="text-2xl font-extrabold text-white mb-2">Request Received!</h3>
-            <p className="text-slate-300 text-sm leading-relaxed mb-6">
-              Thanks, {submittedLead.name}! I'll review your details for the <strong className="text-cyanNeon">{submittedLead.projectType}</strong> and respond within 24 hours with a custom cloud quote.
-            </p>
-            <div className="bg-slate-900 border border-white/5 rounded-2xl p-4 mb-6 text-left text-xs text-slate-400 space-y-2">
-              <p><strong>Config Suggestion:</strong> {getCalcStats(submittedLead.users === "<1k" ? 500 : submittedLead.users === "1k-10k" ? 5000 : 25000).setup}</p>
-            </div>
-            <button
-              onClick={() => {
-                setShowFormSuccess(false);
-                setSubmittedLead(null);
-              }}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-cyanNeon to-blueElectric text-white font-bold text-sm hover:opacity-90 transition-opacity"
-            >
-              Close Window
-            </button>
-          </div>
-        </div>
-      )}
+
 
       {/* Calendly Booking strategy call Modal Overlay */}
       {showScheduler && (

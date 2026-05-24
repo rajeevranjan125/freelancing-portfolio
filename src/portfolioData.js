@@ -13,7 +13,7 @@ export const PORTFOLIO_DATA = {
     whatsapp: "https://wa.me/917079369859",
     github: "https://github.com",
     linkedin: "https://www.linkedin.com/in/rajeev-ranjan-prasad-4764b8233",
-    web3formsKey: "", // Register at https://web3forms.com to get a free key for actual email notifications
+    web3formsKey: "0a7369aa-badc-4166-81ce-46792f864ecf", // Register at https://web3forms.com to get a free key for actual email notifications
     calendly: "", // Add your real Calendly link here to override the mock scheduler with Calendly if desired
     emailjsServiceId: "", // Register at https://www.emailjs.com to get a free Service ID
     emailjsTemplateId: "", // Create a template in EmailJS and enter the Template ID here

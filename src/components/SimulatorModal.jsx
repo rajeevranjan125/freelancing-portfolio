@@ -51,30 +51,30 @@ export default function SimulatorModal({ project, onClose }) {
   }, [project]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-slate-950/90 backdrop-blur-md">
-      <div className="w-full max-w-4xl h-[620px] rounded-3xl glass-panel border-white/10 overflow-hidden shadow-2xl flex flex-col relative animate-scale-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-slate-950/90 backdrop-blur-md">
+      <div className="w-full max-w-4xl max-h-[90vh] md:h-[620px] rounded-3xl glass-panel border-white/10 overflow-hidden shadow-2xl flex flex-col relative animate-scale-in">
         
         {/* Modal Header */}
-        <div className="p-4 bg-slate-950 border-b border-white/5 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="w-3.5 h-3.5 rounded-full bg-red-500"></span>
-            <span className="w-3.5 h-3.5 rounded-full bg-yellow-500"></span>
-            <span className="w-3.5 h-3.5 rounded-full bg-green-500"></span>
-            <span className="text-slate-400 text-xs font-bold ml-2">Virtual Sandbox Sandbox-V1 • {project.title}</span>
+        <div className="p-4 bg-slate-950 border-b border-white/5 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
+            <span className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-full bg-red-500 flex-shrink-0"></span>
+            <span className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-full bg-yellow-500 flex-shrink-0"></span>
+            <span className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-full bg-green-500 flex-shrink-0"></span>
+            <span className="text-slate-400 text-[10px] sm:text-xs font-bold truncate">Sandbox • {project.title}</span>
           </div>
           <button
             onClick={onClose}
-            className="px-3.5 py-1.5 rounded-lg bg-white/5 border border-white/5 text-slate-400 hover:text-white hover:bg-white/10 text-xs font-bold transition-colors"
+            className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 text-slate-400 hover:text-white hover:bg-white/10 text-[10px] sm:text-xs font-bold transition-colors flex-shrink-0"
           >
             Close Simulator
           </button>
         </div>
 
         {/* Simulation Screen body */}
-        <div className="flex-grow grid md:grid-cols-12 overflow-hidden bg-darkBg text-slate-300">
+        <div className="flex-grow grid md:grid-cols-12 overflow-y-auto md:overflow-hidden bg-darkBg text-slate-300">
           
           {/* Left Column: Mock App Screen representation */}
-          <div className="md:col-span-7 p-6 flex flex-col justify-between border-r border-white/5 bg-slate-950/30">
+          <div className="md:col-span-7 p-6 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/5 bg-slate-950/30 flex-shrink-0">
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className="text-[10px] font-extrabold uppercase bg-cyanNeon/10 text-cyanNeon px-2.5 py-1 rounded-md">
@@ -144,11 +144,11 @@ export default function SimulatorModal({ project, onClose }) {
           </div>
 
           {/* Right Column: Console logs output (Dev logs) */}
-          <div className="md:col-span-5 p-6 bg-slate-950 flex flex-col justify-between font-mono text-xs">
+          <div className="md:col-span-5 p-6 bg-slate-950 flex flex-col justify-between font-mono text-xs flex-shrink-0">
             <div>
               <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-4">API Container Log Feed</span>
               
-              <div className="space-y-3 max-h-[420px] overflow-y-auto">
+              <div className="space-y-3 max-h-[220px] md:max-h-[420px] overflow-y-auto">
                 {demoLogs.map((log, lIdx) => (
                   <div 
                     key={lIdx} 

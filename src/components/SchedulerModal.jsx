@@ -58,41 +58,55 @@ export default function SchedulerModal({ personal, onClose }) {
     setSubmitError("");
 
     const formattedDate = `June ${selectedDate.split('-')[2]}, 2026`;
-    const clientAutoReply = `Dear ${schedulerForm.name}, Thank you for reaching out. Your consultation is scheduled for ${formattedDate} at ${selectedTime}. Join Google Meet: https://meet.google.com/pin-sbjf-wfj. Need to reschedule? WhatsApp +91 7079369859. - Rajeev`;
-
-    // Construct standard FormSubmit FormData payload (simple request, bypasses CORS preflight OPTIONS)
-    const payload = new FormData();
-    payload.append("name", schedulerForm.name);
-    payload.append("email", schedulerForm.email);
-    payload.append("consultation_date", formattedDate);
-    payload.append("consultation_time", selectedTime);
-    payload.append("prd_requirements", schedulerForm.notes);
-    payload.append("additional_message", schedulerForm.additionalMessage || "None");
-    payload.append("_subject", "Meeting Confirmed - Rajeev Ranjan Prasad");
-    payload.append("_captcha", "false");
-    payload.append("_template", "table");
-    payload.append("_autoresponse", clientAutoReply);
+    // Construct Web3Forms payload
+    const data = {
+      access_key: personal.web3formsKey || "0a7369aa-badc-4166-81ce-46792f864ecf",
+      subject: `New Strategy Call Booking: ${schedulerForm.name}`,
+      from_name: "Portfolio Strategy Scheduler",
+      name: schedulerForm.name,
+      email: schedulerForm.email,
+      consultation_date: formattedDate,
+      consultation_time: selectedTime,
+      prd_requirements: schedulerForm.notes,
+      additional_message: schedulerForm.additionalMessage || "None",
+      message: `
+Strategy Session Booked!
+------------------------
+Client Name: ${schedulerForm.name}
+Client Email: ${schedulerForm.email}
+Date: ${formattedDate}
+Time: ${selectedTime}
+PRD/Requirements: ${schedulerForm.notes}
+Additional Message: ${schedulerForm.additionalMessage || "None"}
+Google Meet Link: https://meet.google.com/pin-sbjf-wfj
+      `.trim()
+    };
 
     try {
-      // POST to FormSubmit.co ajax endpoint as FormData simple request
-      const response = await fetch("https://formsubmit.co/ajax/rajeevranjan.freelance@gmail.com", {
+      // POST to Web3Forms endpoint
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: payload
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(data)
       });
       
-      if (!response.ok) {
-        const errData = await response.json().catch(() => ({}));
-        throw new Error(errData.message || "Form submission failed");
+      const resData = await response.json().catch(() => ({}));
+      
+      if (!response.ok || !resData.success) {
+        throw new Error(resData.message || "Form submission failed");
       }
 
       // Start 30 seconds cooldown timer to prevent spam
       setCooldown(30);
       setSchedulerStep(3);
     } catch (err) {
-      console.error("Failed to submit form to FormSubmit:", err);
+      console.error("Failed to submit form to Web3Forms:", err);
       let userMsg = err.message || "Please check your network connection or try again.";
       if (err instanceof TypeError || err.message?.includes("Load failed") || err.message?.includes("failed to fetch")) {
-        userMsg = "Blocked by browser security or an AdBlocker (like Brave Shields or Safari Content Blockers). Please temporarily disable it for this website or contact me on WhatsApp: +91 7079369859.";
+        userMsg = "Blocked by browser security or an AdBlocker (like Brave Shields). Please temporarily disable it for this website or contact me on WhatsApp: +91 7079369859.";
       }
       setSubmitError(`⚠️ Failed to submit form: ${userMsg}`);
     } finally {
@@ -101,8 +115,8 @@ export default function SchedulerModal({ personal, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-slate-950/80 backdrop-blur-sm">
-      <div className="w-full max-w-3xl rounded-3xl glass-panel overflow-hidden border-white/10 shadow-2xl flex flex-col md:flex-row relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-slate-950/80 backdrop-blur-sm">
+      <div className="w-full max-w-3xl rounded-3xl glass-panel overflow-hidden border-white/10 shadow-2xl flex flex-col md:flex-row relative max-h-[90vh]">
         
         {/* Close Button */}
         <button 
@@ -113,7 +127,7 @@ export default function SchedulerModal({ personal, onClose }) {
         </button>
 
         {/* Left Host Column */}
-        <div className="md:w-5/12 p-6 md:p-8 bg-slate-900/50 border-r border-white/5 flex flex-col justify-between">
+        <div className="w-full md:w-5/12 p-6 md:p-8 bg-slate-900/50 border-b md:border-b-0 md:border-r border-white/5 flex flex-col justify-between flex-shrink-0">
           <div>
             <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-cyanNeon to-blueElectric flex items-center justify-center font-bold text-white shadow-lg mb-6">
               RP
@@ -135,7 +149,7 @@ export default function SchedulerModal({ personal, onClose }) {
         </div>
 
         {/* Right Interactive Booking Calendar/Details Column */}
-        <div className="md:w-7/12 p-6 md:p-8 bg-slate-950/40 max-h-[90vh] overflow-y-auto">
+        <div className="w-full md:w-7/12 p-6 md:p-8 bg-slate-950/40 overflow-y-auto flex-grow">
           
           {/* Step 1: Pick Date & Time */}
           {schedulerStep === 1 && (
