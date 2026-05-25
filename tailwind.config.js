@@ -10,12 +10,12 @@ export default {
         sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
       },
       colors: {
-        darkBg: '#0B1120',
-        darkCard: '#0f172a',
-        cyanNeon: '#06b6d4',
-        blueElectric: '#3b82f6',
-        purpleSubtle: '#8b5cf6',
-        borderDark: '#1e293b',
+        darkBg: '#ffffff',
+        darkCard: '#ffffff',
+        cyanNeon: '#000000',
+        blueElectric: '#000000',
+        purpleSubtle: '#737373',
+        borderDark: '#e5e5e5',
       },
       animation: {
         'pulse-glow': 'pulseGlow 2s infinite alternate',
@@ -28,8 +28,8 @@ export default {
       },
       keyframes: {
         pulseGlow: {
-          '0%': { boxShadow: '0 0 5px rgba(6, 182, 212, 0.2), 0 0 10px rgba(6, 182, 212, 0.1)' },
-          '100%': { boxShadow: '0 0 15px rgba(6, 182, 212, 0.5), 0 0 30px rgba(59, 130, 246, 0.3)' },
+          '0%': { boxShadow: '0 0 5px rgba(0, 0, 0, 0.05), 0 0 10px rgba(0, 0, 0, 0.02)' },
+          '100%': { boxShadow: '0 0 15px rgba(0, 0, 0, 0.15), 0 0 30px rgba(0, 0, 0, 0.1)' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },

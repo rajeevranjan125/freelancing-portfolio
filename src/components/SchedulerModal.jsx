@@ -115,51 +115,51 @@ Google Meet Link: https://meet.google.com/pin-sbjf-wfj
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-slate-950/80 backdrop-blur-sm">
-      <div className="w-full max-w-3xl rounded-3xl glass-panel overflow-hidden border-white/10 shadow-2xl flex flex-col md:flex-row relative max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-black/60 backdrop-blur-sm">
+      <div className="w-full max-w-3xl rounded-3xl glass-panel overflow-hidden border-neutral-200 shadow-xl flex flex-col md:flex-row relative max-h-[90vh] bg-white">
         
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 border border-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors z-10"
+          className="absolute top-4 right-4 w-8 h-8 rounded-full bg-neutral-100 border border-neutral-200 flex items-center justify-center text-neutral-600 hover:text-black hover:bg-neutral-200 transition-colors z-10 font-bold"
         >
           ✕
         </button>
 
         {/* Left Host Column */}
-        <div className="w-full md:w-5/12 p-6 md:p-8 bg-slate-900/50 border-b md:border-b-0 md:border-r border-white/5 flex flex-col justify-between flex-shrink-0">
+        <div className="w-full md:w-5/12 p-6 md:p-8 bg-neutral-50 border-b md:border-b-0 md:border-r border-neutral-200 flex flex-col justify-between flex-shrink-0 text-black">
           <div>
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-cyanNeon to-blueElectric flex items-center justify-center font-bold text-white shadow-lg mb-6">
+            <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center font-bold text-white shadow-sm mb-6">
               RP
             </div>
-            <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Strategy Host</span>
-            <h3 className="text-xl font-bold text-white mt-1">{personal.name}</h3>
-            <h4 className="text-sm font-semibold text-cyanNeon mt-4 flex items-center gap-2">
+            <span className="text-[10px] uppercase font-bold text-neutral-500 tracking-wider">Strategy Host</span>
+            <h3 className="text-xl font-bold text-black mt-1">{personal.name}</h3>
+            <h4 className="text-sm font-semibold text-black mt-4 flex items-center gap-2">
               <span>30 Min Cloud & Development Strategy</span>
             </h4>
-            <p className="text-slate-400 text-xs mt-3 leading-relaxed">
+            <p className="text-neutral-600 text-xs mt-3 leading-relaxed">
               Discuss your software goals, scope requirements, database architectures, and receive a free Cloud Infrastructure estimate directly.
             </p>
           </div>
           
-          <div className="mt-8 pt-4 border-t border-white/5 text-xs text-slate-500 space-y-2">
+          <div className="mt-8 pt-4 border-t border-neutral-200 text-xs text-neutral-500 space-y-2">
             <p>🕒 30 minutes video meeting</p>
             <p>🌍 Scheduled in {personal.timezone}</p>
           </div>
         </div>
 
         {/* Right Interactive Booking Calendar/Details Column */}
-        <div className="w-full md:w-7/12 p-6 md:p-8 bg-slate-950/40 overflow-y-auto flex-grow">
+        <div className="w-full md:w-7/12 p-6 md:p-8 bg-white overflow-y-auto flex-grow text-black">
           
           {/* Step 1: Pick Date & Time */}
           {schedulerStep === 1 && (
             <div className="space-y-6">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <h3 className="text-lg font-bold text-white">Select Date & Time</h3>
+                <h3 className="text-lg font-bold text-black">Select Date & Time</h3>
                 <button
                   type="button"
                   onClick={handleCopyMeetLink}
-                  className="px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-slate-300 hover:text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 self-start sm:self-auto"
+                  className="px-3.5 py-2 rounded-xl bg-neutral-100 border border-neutral-200 hover:bg-neutral-200 text-neutral-700 hover:text-black text-xs font-bold transition-all flex items-center justify-center gap-1.5 self-start sm:self-auto"
                 >
                   {copied ? "✓ Link Copied!" : "📋 Copy Meet Link"}
                 </button>
@@ -167,13 +167,13 @@ Google Meet Link: https://meet.google.com/pin-sbjf-wfj
               
               {/* Simulated Mini Calendar for June 2026 */}
               <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 flex justify-between">
+                <div className="text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2 flex justify-between">
                   <span>June 2026</span>
                   <span>Mon - Fri Slots Open</span>
                 </div>
-                <div className="grid grid-cols-7 gap-1.5 text-center text-xs text-slate-400 border border-white/5 p-3 rounded-2xl bg-slate-900/30">
+                <div className="grid grid-cols-7 gap-1.5 text-center text-xs text-neutral-600 border border-neutral-200 p-3 rounded-2xl bg-neutral-50">
                   {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => (
-                    <span key={i} className="font-bold text-[10px] text-slate-500 py-1">{d}</span>
+                    <span key={i} className="font-bold text-[10px] text-neutral-400 py-1">{d}</span>
                   ))}
                   
                   {/* Blank days for start of month (June 1st, 2026 is Monday, so 1 blank Sunday offset) */}
@@ -195,10 +195,10 @@ Google Meet Link: https://meet.google.com/pin-sbjf-wfj
                         onClick={() => setSelectedDate(dateStr)}
                         className={`py-2 rounded-lg font-bold transition-all duration-300 ${
                           isWeekend 
-                            ? 'text-slate-700 cursor-not-allowed'
+                            ? 'text-neutral-300 cursor-not-allowed font-normal'
                             : isSelected
-                              ? 'bg-cyanNeon text-slate-950 shadow-md shadow-cyanNeon/20'
-                              : 'text-slate-300 hover:bg-white/5'
+                              ? 'bg-black text-white shadow-sm'
+                              : 'text-neutral-800 hover:bg-neutral-200'
                         }`}
                       >
                         {dayNum}
@@ -210,7 +210,7 @@ Google Meet Link: https://meet.google.com/pin-sbjf-wfj
 
               {/* Time Slots grid */}
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">Available Time Slots (Your Timezone)</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 block mb-2">Available Time Slots (Your Timezone)</span>
                 <div className="grid grid-cols-3 gap-2">
                   {["09:00 AM", "11:30 AM", "02:00 PM", "04:30 PM"].map((t) => (
                     <button
@@ -219,8 +219,8 @@ Google Meet Link: https://meet.google.com/pin-sbjf-wfj
                       onClick={() => setSelectedTime(t)}
                       className={`py-2 rounded-xl text-xs font-bold border transition-all duration-300 ${
                         selectedTime === t
-                          ? 'border-cyanNeon bg-cyanNeon/10 text-white'
-                          : 'border-white/5 bg-slate-900/30 text-slate-300 hover:border-white/10'
+                          ? 'border-black bg-black text-white'
+                          : 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:border-neutral-400'
                       }`}
                     >
                       {t}
@@ -235,8 +235,8 @@ Google Meet Link: https://meet.google.com/pin-sbjf-wfj
                 onClick={() => setSchedulerStep(2)}
                 className={`w-full py-3 rounded-xl font-bold text-sm text-center transition-all ${
                   selectedTime 
-                    ? 'bg-gradient-to-r from-cyanNeon to-blueElectric text-white hover:opacity-90 shadow-md'
-                    : 'bg-slate-800 text-slate-500 cursor-not-allowed'
+                    ? 'bg-black text-white hover:bg-neutral-800 shadow-sm'
+                    : 'bg-neutral-200 text-neutral-400 cursor-not-allowed'
                 }`}
               >
                 Next Step
@@ -247,62 +247,62 @@ Google Meet Link: https://meet.google.com/pin-sbjf-wfj
           {/* Step 2: Confirmation Fields */}
           {schedulerStep === 2 && (
             <form onSubmit={handleScheduleSubmit} className="space-y-4">
-              <h3 className="text-lg font-bold text-white">Confirm Strategy Call Details</h3>
+              <h3 className="text-lg font-bold text-black">Confirm Strategy Call Details</h3>
               
-              <div className="p-3.5 rounded-xl bg-white/5 border border-white/5 text-xs text-slate-300 space-y-1">
+              <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-700 space-y-1">
                 <p><strong>Date:</strong> June {selectedDate.split('-')[2]}, 2026</p>
                 <p><strong>Time Slot:</strong> {selectedTime}</p>
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Full Name *</label>
+                <label className="block text-xs font-bold uppercase tracking-wider text-neutral-500 mb-1.5">Full Name *</label>
                 <input 
                   type="text" 
                   placeholder="Your Name"
                   value={schedulerForm.name}
                   onChange={(e) => setSchedulerForm({...schedulerForm, name: e.target.value})}
-                  className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-cyanNeon transition-colors"
+                  className="w-full bg-white border border-neutral-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-black text-black transition-colors"
                 />
-                {schedulerErrors.name && <p className="text-red-400 text-xs mt-1">{schedulerErrors.name}</p>}
+                {schedulerErrors.name && <p className="text-neutral-500 text-xs mt-1 font-bold">{schedulerErrors.name}</p>}
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Email Address *</label>
+                <label className="block text-xs font-bold uppercase tracking-wider text-neutral-500 mb-1.5">Email Address *</label>
                 <input 
                   type="email" 
                   placeholder="you@company.com"
                   value={schedulerForm.email}
                   onChange={(e) => setSchedulerForm({...schedulerForm, email: e.target.value})}
-                  className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-cyanNeon transition-colors"
+                  className="w-full bg-white border border-neutral-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-black text-black transition-colors"
                 />
-                {schedulerErrors.email && <p className="text-red-400 text-xs mt-1">{schedulerErrors.email}</p>}
+                {schedulerErrors.email && <p className="text-neutral-500 text-xs mt-1 font-bold">{schedulerErrors.email}</p>}
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">PRD / Requirements *</label>
+                <label className="block text-xs font-bold uppercase tracking-wider text-neutral-500 mb-1.5">PRD / Requirements *</label>
                 <textarea 
                   rows="3" 
                   placeholder="Describe your project, technology requirements, or scope details..."
                   value={schedulerForm.notes}
                   onChange={(e) => setSchedulerForm({...schedulerForm, notes: e.target.value})}
-                  className="w-full bg-slate-900 border border-white/10 rounded-xl p-4 text-sm focus:outline-none focus:border-cyanNeon transition-colors"
+                  className="w-full bg-white border border-neutral-300 rounded-xl p-4 text-sm focus:outline-none focus:border-black text-black transition-colors"
                 ></textarea>
-                {schedulerErrors.notes && <p className="text-red-400 text-xs mt-1">{schedulerErrors.notes}</p>}
+                {schedulerErrors.notes && <p className="text-neutral-500 text-xs mt-1 font-bold">{schedulerErrors.notes}</p>}
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Additional Message (Optional)</label>
+                <label className="block text-xs font-bold uppercase tracking-wider text-neutral-500 mb-1.5">Additional Message (Optional)</label>
                 <textarea 
                   rows="2" 
                   placeholder="Any other details, notes, or specific requests..."
                   value={schedulerForm.additionalMessage}
                   onChange={(e) => setSchedulerForm({...schedulerForm, additionalMessage: e.target.value})}
-                  className="w-full bg-slate-900 border border-white/10 rounded-xl p-4 text-sm focus:outline-none focus:border-cyanNeon transition-colors"
+                  className="w-full bg-white border border-neutral-300 rounded-xl p-4 text-sm focus:outline-none focus:border-black text-black transition-colors"
                 ></textarea>
               </div>
 
               {submitError && (
-                <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/20 text-xs text-red-400">
+                <div className="p-3.5 rounded-xl bg-neutral-100 border border-neutral-300 text-xs text-neutral-800 font-bold">
                   {submitError}
                 </div>
               )}
@@ -311,7 +311,7 @@ Google Meet Link: https://meet.google.com/pin-sbjf-wfj
                 <button
                   type="button"
                   onClick={() => setSchedulerStep(1)}
-                  className="flex-1 py-3 rounded-xl bg-white/5 border border-white/10 text-slate-300 text-sm font-bold hover:text-white transition-colors"
+                  className="flex-1 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-700 text-sm font-bold hover:bg-neutral-50 transition-colors"
                   disabled={isSubmitting}
                 >
                   Change Date
@@ -319,7 +319,7 @@ Google Meet Link: https://meet.google.com/pin-sbjf-wfj
                 <button
                   type="submit"
                   disabled={cooldown > 0 || isSubmitting}
-                  className={`flex-1 py-3 rounded-xl bg-gradient-to-r from-cyanNeon to-blueElectric text-white text-sm font-bold hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(6,182,212,0.2)] flex items-center justify-center gap-2 ${
+                  className={`flex-1 py-3 rounded-xl bg-black text-white text-sm font-bold hover:bg-neutral-800 transition-opacity shadow-sm flex items-center justify-center gap-2 ${
                     (cooldown > 0 || isSubmitting) ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                 >
@@ -344,21 +344,21 @@ Google Meet Link: https://meet.google.com/pin-sbjf-wfj
           {/* Step 3: Success Screen */}
           {schedulerStep === 3 && (
             <div className="text-center py-8 space-y-6">
-              <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-3xl font-extrabold">
+              <div className="w-16 h-16 rounded-full bg-neutral-100 border border-neutral-300 text-black flex items-center justify-center mx-auto text-3xl font-extrabold shadow-sm">
                 ✓
               </div>
               <div>
-                <h3 className="text-2xl font-extrabold text-white">✅ Request sent!</h3>
-                <p className="text-slate-300 text-sm mt-2 leading-relaxed font-medium">
-                  Check your email for Google Meet link: <a href="https://meet.google.com/pin-sbjf-wfj" target="_blank" rel="noreferrer" className="text-cyanNeon hover:text-cyanNeon/80 font-bold underline break-all">https://meet.google.com/pin-sbjf-wfj</a>
+                <h3 className="text-2xl font-extrabold text-black">✅ Request sent!</h3>
+                <p className="text-neutral-700 text-sm mt-2 leading-relaxed font-medium">
+                  Check your email for Google Meet link: <a href="https://meet.google.com/pin-sbjf-wfj" target="_blank" rel="noreferrer" className="text-black font-bold underline hover:text-neutral-600 break-all">https://meet.google.com/pin-sbjf-wfj</a>
                 </p>
               </div>
 
-              <div className="bg-slate-900/80 border border-white/5 rounded-2xl p-4 max-w-md mx-auto text-left text-xs text-slate-400 space-y-2.5">
+              <div className="bg-neutral-50 border border-neutral-200 rounded-2xl p-4 max-w-md mx-auto text-left text-xs text-neutral-600 space-y-2.5">
                 <p><strong>Host:</strong> {personal.name}</p>
                 <p><strong>Scheduled Slot:</strong> June {selectedDate.split('-')[2]}, 2026 at {selectedTime}</p>
-                <p><strong>Google Meet Link:</strong> <a href={meetLink} target="_blank" rel="noreferrer" className="text-cyanNeon hover:text-cyanNeon/80 font-bold underline break-all">{meetLink}</a></p>
-                <p className="text-[10px] text-slate-500 italic">Please join using the Google Meet link at the scheduled time.</p>
+                <p><strong>Google Meet Link:</strong> <a href={meetLink} target="_blank" rel="noreferrer" className="text-black font-bold underline hover:text-neutral-600 break-all">{meetLink}</a></p>
+                <p className="text-[10px] text-neutral-400 italic">Please join using the Google Meet link at the scheduled time.</p>
               </div>
 
               <div className="max-w-md mx-auto">
@@ -370,7 +370,7 @@ Google Meet Link: https://meet.google.com/pin-sbjf-wfj
                     setSelectedTime("");
                     setSchedulerStep(1);
                   }}
-                  className="w-full py-3 rounded-xl bg-gradient-to-r from-cyanNeon to-blueElectric text-white font-bold text-sm hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(6,182,212,0.2)]"
+                  className="w-full py-3 rounded-xl bg-black text-white font-bold text-sm hover:bg-neutral-800 shadow-sm"
                 >
                   Done
                 </button>
