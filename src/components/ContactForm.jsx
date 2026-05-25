@@ -97,54 +97,54 @@ export default function ContactForm({ onSubmitSuccess }) {
   };
 
   return (
-    <form onSubmit={handleContactSubmit} className="p-8 rounded-3xl glass-panel border-white/5 space-y-6 shadow-2xl relative">
+    <form onSubmit={handleContactSubmit} className="p-8 rounded-3xl glass-panel border-neutral-200 bg-white space-y-6 shadow-xl relative text-black">
       
       {/* Form Progress Indicator */}
-      <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden mb-6 flex justify-between">
-        <div className="bg-gradient-to-r from-cyanNeon to-blueElectric h-full transition-all duration-500" style={{ width: `${(contactStep / 3) * 100}%` }}></div>
+      <div className="w-full bg-neutral-200 h-1.5 rounded-full overflow-hidden mb-6 flex justify-between">
+        <div className="bg-black h-full transition-all duration-500" style={{ width: `${(contactStep / 3) * 100}%` }}></div>
       </div>
 
-      <div className="flex justify-between items-center text-xs text-slate-500 font-bold mb-4">
-        <span className={contactStep >= 1 ? "text-cyanNeon" : ""}>1. About You</span>
-        <span className={contactStep >= 2 ? "text-cyanNeon" : ""}>2. Scope</span>
-        <span className={contactStep >= 3 ? "text-cyanNeon" : ""}>3. Scale & Budget</span>
+      <div className="flex justify-between items-center text-xs text-neutral-500 font-bold mb-4">
+        <span className={contactStep >= 1 ? "text-black underline font-extrabold" : ""}>1. About You</span>
+        <span className={contactStep >= 2 ? "text-black underline font-extrabold" : ""}>2. Scope</span>
+        <span className={contactStep >= 3 ? "text-black underline font-extrabold" : ""}>3. Scale & Budget</span>
       </div>
 
       {/* Step 1: Info */}
       {contactStep === 1 && (
         <div className="space-y-4">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Full Name *</label>
+            <label className="block text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2">Full Name *</label>
             <input 
               type="text" 
               placeholder="John Doe"
               value={formData.name}
               onChange={(e) => setFormData({...formData, name: e.target.value})}
-              className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyanNeon transition-colors"
+              className="w-full bg-white border border-neutral-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black text-black transition-colors"
             />
-            {formErrors.name && <p className="text-red-400 text-xs mt-1">{formErrors.name}</p>}
+            {formErrors.name && <p className="text-black font-bold text-xs mt-1">{formErrors.name}</p>}
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Email Address *</label>
+            <label className="block text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2">Email Address *</label>
             <input 
               type="email" 
               placeholder="john@company.com"
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
-              className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyanNeon transition-colors"
+              className="w-full bg-white border border-neutral-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black text-black transition-colors"
             />
-            {formErrors.email && <p className="text-red-400 text-xs mt-1">{formErrors.email}</p>}
+            {formErrors.email && <p className="text-black font-bold text-xs mt-1">{formErrors.email}</p>}
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Phone Number (Optional)</label>
+            <label className="block text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2">Phone Number (Optional)</label>
             <input 
               type="tel" 
               placeholder="+1 (555) 019-2834"
               value={formData.phone}
               onChange={(e) => setFormData({...formData, phone: e.target.value})}
-              className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyanNeon transition-colors"
+              className="w-full bg-white border border-neutral-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black text-black transition-colors"
             />
           </div>
         </div>
@@ -153,7 +153,7 @@ export default function ContactForm({ onSubmitSuccess }) {
       {/* Step 2: Scope */}
       {contactStep === 2 && (
         <div className="space-y-4">
-          <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">What are you building? *</label>
+          <label className="block text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2">What are you building? *</label>
           <div className="grid grid-cols-2 gap-3">
             {["Web App", "Mobile App", "Both", "Cloud Consulting"].map((t) => (
               <button
@@ -162,26 +162,26 @@ export default function ContactForm({ onSubmitSuccess }) {
                 onClick={() => setFormData({...formData, projectType: t})}
                 className={`p-4 rounded-xl border text-sm font-bold transition-all duration-300 text-left flex flex-col justify-between h-24 ${
                   formData.projectType === t
-                    ? 'border-cyanNeon bg-cyanNeon/5 text-white'
-                    : 'border-white/10 bg-slate-900/50 text-slate-400'
+                    ? 'border-black bg-black text-white'
+                    : 'border-neutral-200 bg-neutral-50 text-neutral-600 hover:border-neutral-400'
                 }`}
               >
                 <span>{t}</span>
-                <span className="text-[10px] font-normal text-slate-400">Click to Select</span>
+                <span className={`text-[10px] font-normal ${formData.projectType === t ? 'text-neutral-300' : 'text-neutral-400'}`}>Click to Select</span>
               </button>
             ))}
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mt-4 mb-2">Explain the project briefly *</label>
+            <label className="block text-xs font-bold uppercase tracking-wider text-neutral-500 mt-4 mb-2">Explain the project briefly *</label>
             <textarea 
               rows="3" 
               placeholder="Need a payment platform optimized for high scale..."
               value={formData.message}
               onChange={(e) => setFormData({...formData, message: e.target.value})}
-              className="w-full bg-slate-900 border border-white/10 rounded-xl p-4 text-sm focus:outline-none focus:border-cyanNeon transition-colors"
+              className="w-full bg-white border border-neutral-300 rounded-xl p-4 text-sm focus:outline-none focus:border-black text-black transition-colors"
             ></textarea>
-            {formErrors.message && <p className="text-red-400 text-xs mt-1">{formErrors.message}</p>}
+            {formErrors.message && <p className="text-black font-bold text-xs mt-1">{formErrors.message}</p>}
           </div>
         </div>
       )}
@@ -191,7 +191,7 @@ export default function ContactForm({ onSubmitSuccess }) {
         <div className="space-y-4">
           
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Estimated Active Users</label>
+            <label className="block text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2">Estimated Active Users</label>
             <div className="flex gap-2">
               {["<1k", "1k-10k", "10k+"].map((u) => (
                 <button
@@ -200,8 +200,8 @@ export default function ContactForm({ onSubmitSuccess }) {
                   onClick={() => setFormData({...formData, users: u})}
                   className={`flex-1 py-3 rounded-xl border text-sm font-bold transition-all duration-300 ${
                     formData.users === u
-                      ? 'border-cyanNeon bg-cyanNeon/5 text-white'
-                      : 'border-white/10 bg-slate-900/50 text-slate-400'
+                      ? 'border-black bg-black text-white'
+                      : 'border-neutral-200 bg-neutral-50 text-neutral-600 hover:border-neutral-400'
                   }`}
                 >
                   {u}
@@ -211,7 +211,7 @@ export default function ContactForm({ onSubmitSuccess }) {
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mt-4 mb-2">Estimated Budget Range</label>
+            <label className="block text-xs font-bold uppercase tracking-wider text-neutral-500 mt-4 mb-2">Estimated Budget Range</label>
             <div className="flex gap-2">
               {["<5k", "5k-15k", "15k+"].map((b) => (
                 <button
@@ -220,8 +220,8 @@ export default function ContactForm({ onSubmitSuccess }) {
                   onClick={() => setFormData({...formData, budget: b})}
                   className={`flex-1 py-3 rounded-xl border text-sm font-bold transition-all duration-300 ${
                     formData.budget === b
-                      ? 'border-cyanNeon bg-cyanNeon/5 text-white'
-                      : 'border-white/10 bg-slate-900/50 text-slate-400'
+                      ? 'border-black bg-black text-white'
+                      : 'border-neutral-200 bg-neutral-50 text-neutral-600 hover:border-neutral-400'
                   }`}
                 >
                   {b}
@@ -233,12 +233,12 @@ export default function ContactForm({ onSubmitSuccess }) {
       )}
 
       {/* Navigation Buttons */}
-      <div className="flex justify-between pt-6 border-t border-white/5">
+      <div className="flex justify-between pt-6 border-t border-neutral-100">
         {contactStep > 1 ? (
           <button
             type="button"
             onClick={() => setContactStep(prev => prev - 1)}
-            className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-slate-300 text-sm font-bold hover:text-white transition-colors"
+            className="px-6 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-700 text-sm font-bold hover:bg-neutral-50 hover:text-black transition-colors"
           >
             Back
           </button>
@@ -250,14 +250,14 @@ export default function ContactForm({ onSubmitSuccess }) {
           <button
             type="button"
             onClick={handleContactNext}
-            className="px-8 py-3 rounded-xl bg-gradient-to-r from-cyanNeon to-blueElectric text-white text-sm font-bold hover:opacity-90 transition-opacity"
+            className="px-8 py-3 rounded-xl bg-black text-white text-sm font-bold hover:bg-neutral-800 transition-all border border-black shadow-sm"
           >
             Next Step
           </button>
         ) : (
           <button
             type="submit"
-            className="px-8 py-3 rounded-xl bg-gradient-to-r from-cyanNeon to-blueElectric text-white text-sm font-bold hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(6,182,212,0.3)]"
+            className="px-8 py-3 rounded-xl bg-black text-white text-sm font-bold hover:bg-neutral-800 transition-all border border-black shadow-md shadow-neutral-100"
           >
             Get Custom Cloud Quote
           </button>

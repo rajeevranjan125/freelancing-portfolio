@@ -111,45 +111,41 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen grid-bg overflow-x-hidden selection:bg-cyanNeon/30">
+    <div className="relative min-h-screen bg-[#f5f5f7] overflow-x-hidden selection:bg-neutral-200">
       
-      {/* Decorative Glow Lights */}
-      <div className="absolute top-0 left-1/4 w-[400px] md:w-[700px] h-[400px] md:h-[700px] bg-cyanNeon/5 rounded-full blur-[130px] pointer-events-none -z-10"></div>
-      <div className="absolute top-[40%] right-1/4 w-[450px] md:w-[750px] h-[450px] md:h-[750px] bg-purpleSubtle/5 rounded-full blur-[140px] pointer-events-none -z-10"></div>
-      <div className="absolute bottom-[10%] left-1/3 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-blueElectric/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+      {/* Decorative Glow Lights - Removed for pristine monochromatic aesthetic */}
 
       {/* Sticky Header Nav */}
-      <header className="sticky top-0 z-40 w-full border-b border-white/5 bg-darkBg/75 backdrop-blur-md transition-all duration-300">
+      <header className="sticky top-0 z-40 w-full border-b border-neutral-200 bg-white/90 backdrop-blur-md transition-all duration-300">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyanNeon to-blueElectric flex items-center justify-center font-bold text-white shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-transform group-hover:scale-105">
+            <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center font-bold text-white shadow-sm transition-transform group-hover:scale-105">
               RP
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-lg leading-tight tracking-tight text-white group-hover:text-cyanNeon transition-colors">{PORTFOLIO_DATA.personal.name}</span>
-              <span className="text-xs text-slate-400 font-medium">{PORTFOLIO_DATA.personal.role}</span>
+              <span className="font-bold text-lg leading-tight tracking-tight text-black group-hover:text-neutral-600 transition-colors">{PORTFOLIO_DATA.personal.name}</span>
+              <span className="text-xs text-neutral-500 font-medium">{PORTFOLIO_DATA.personal.role}</span>
             </div>
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#services" className="text-sm font-medium text-slate-300 hover:text-cyanNeon transition-colors">Services</a>
-            <a href="#strategy" className="text-sm font-medium text-slate-300 hover:text-cyanNeon transition-colors">Cloud Strategy</a>
-            <a href="#projects" className="text-sm font-medium text-slate-300 hover:text-cyanNeon transition-colors">Projects</a>
-            <a href="#calculator" className="text-sm font-medium text-slate-300 hover:text-cyanNeon transition-colors">Cost Calculator</a>
-            <a href="#why-me" className="text-sm font-medium text-slate-300 hover:text-cyanNeon transition-colors">Why Me</a>
+            <a href="#services" className="text-sm font-medium text-neutral-600 hover:text-black transition-colors">Services</a>
+            <a href="#strategy" className="text-sm font-medium text-neutral-600 hover:text-black transition-colors">Cloud Strategy</a>
+            <a href="#projects" className="text-sm font-medium text-neutral-600 hover:text-black transition-colors">Projects</a>
+            <a href="#calculator" className="text-sm font-medium text-neutral-600 hover:text-black transition-colors">Cost Calculator</a>
+            <a href="#why-me" className="text-sm font-medium text-neutral-600 hover:text-black transition-colors">Why Me</a>
           </nav>
 
           <div className="flex items-center gap-3">
-            <div className="hidden lg:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-semibold text-emerald-400 relative">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-              <span className="w-2 h-2 rounded-full bg-emerald-400 absolute"></span>
-              <span className="ml-3">{PORTFOLIO_DATA.personal.availability}</span>
+            <div className="hidden lg:flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-black text-[10px] font-extrabold uppercase tracking-widest text-black shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-black inline-block"></span>
+              <span>{PORTFOLIO_DATA.personal.availability}</span>
             </div>
 
             <button 
               onClick={handleOpenScheduler}
-              className="hidden sm:inline-block px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-cyanNeon/50 hover:bg-cyanNeon/10 text-sm font-semibold transition-all duration-300 shadow-sm"
+              className="hidden sm:inline-block px-5 py-2.5 rounded-xl bg-black text-white hover:bg-neutral-800 text-sm font-semibold transition-all duration-300 shadow-sm border border-black"
             >
               Book a Call
             </button>
@@ -157,7 +153,7 @@ export default function App() {
             {/* Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+              className="md:hidden p-2.5 rounded-xl bg-white border border-neutral-200 text-neutral-600 hover:text-black hover:bg-neutral-50 transition-colors"
               aria-label="Toggle mobile menu"
             >
               {mobileMenuOpen ? (
@@ -176,21 +172,21 @@ export default function App() {
 
       {/* Mobile Menu Panel */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed top-20 left-0 right-0 z-40 border-b border-white/5 bg-slate-950/95 backdrop-blur-lg p-6 space-y-4 shadow-xl flex flex-col">
-          <a href="#services" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-slate-300 hover:text-cyanNeon transition-colors py-2 border-b border-white/5">Services</a>
-          <a href="#strategy" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-slate-300 hover:text-cyanNeon transition-colors py-2 border-b border-white/5">Cloud Strategy</a>
-          <a href="#projects" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-slate-300 hover:text-cyanNeon transition-colors py-2 border-b border-white/5">Projects</a>
-          <a href="#calculator" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-slate-300 hover:text-cyanNeon transition-colors py-2 border-b border-white/5">Cost Calculator</a>
-          <a href="#why-me" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-slate-300 hover:text-cyanNeon transition-colors py-2">Why Me</a>
+        <div className="md:hidden fixed top-20 left-0 right-0 z-40 border-b border-neutral-200 bg-white/95 backdrop-blur-lg p-6 space-y-4 shadow-xl flex flex-col">
+          <a href="#services" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-neutral-600 hover:text-black transition-colors py-2 border-b border-neutral-100">Services</a>
+          <a href="#strategy" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-neutral-600 hover:text-black transition-colors py-2 border-b border-neutral-100">Cloud Strategy</a>
+          <a href="#projects" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-neutral-600 hover:text-black transition-colors py-2 border-b border-neutral-100">Projects</a>
+          <a href="#calculator" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-neutral-600 hover:text-black transition-colors py-2 border-b border-neutral-100">Cost Calculator</a>
+          <a href="#why-me" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-neutral-600 hover:text-black transition-colors py-2">Why Me</a>
           
-          <div className="pt-4 border-t border-white/5 flex flex-col gap-3">
-            <span className="text-xs text-slate-400 font-semibold text-center">{PORTFOLIO_DATA.personal.availability}</span>
+          <div className="pt-4 border-t border-neutral-100 flex flex-col gap-3">
+            <span className="text-xs text-neutral-500 font-semibold text-center">{PORTFOLIO_DATA.personal.availability}</span>
             <button 
               onClick={() => {
                 setMobileMenuOpen(false);
                 handleOpenScheduler();
               }}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-cyanNeon to-blueElectric text-white text-sm font-bold shadow-md text-center"
+              className="w-full py-3 rounded-xl bg-black text-white text-sm font-bold shadow-md text-center border border-black hover:bg-neutral-800"
             >
               Book a Call
             </button>
@@ -201,27 +197,11 @@ export default function App() {
       {/* Hero Section */}
       <section className="relative pt-16 pb-24 md:pt-28 md:pb-36 max-w-7xl mx-auto px-6 overflow-hidden">
         
-        {/* Static Background Icons */}
-        <div className="absolute top-10 left-10 w-16 h-16 text-slate-700/20 pointer-events-none hidden lg:block">
-          <svg className="w-full h-full text-cyanNeon/10" viewBox="-11.5 -10.23174 23 20.46348">
-            <circle cx="0" cy="0" r="2.05" fill="currentColor"/>
-            <g stroke="currentColor" strokeWidth="1" fill="none">
-              <ellipse rx="11" ry="4.2"/>
-              <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
-              <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
-            </g>
-          </svg>
-        </div>
-        <div className="absolute bottom-20 right-16 w-20 h-20 text-slate-700/20 pointer-events-none hidden lg:block">
-          <svg className="w-full h-full text-emerald-500/10" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
-          </svg>
-        </div>
 
         <div className="text-center max-w-4xl mx-auto">
           <ScrollReveal>
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-cyanNeon/10 border border-cyanNeon/20 text-xs md:text-sm font-semibold text-cyanNeon mb-8 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
-              <svg className="w-4 h-4 text-cyanNeon animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-100 border border-neutral-200 text-xs md:text-sm font-semibold text-neutral-800 mb-8 shadow-sm">
+              <svg className="w-4 h-4 text-black animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
               </svg>
               <span>{PORTFOLIO_DATA.hero.badgeText}</span>
@@ -229,7 +209,7 @@ export default function App() {
           </ScrollReveal>
 
           <ScrollReveal delay={150}>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.1] font-sans">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-black mb-6 leading-[1.1] font-sans">
               Scalable Web + Mobile Apps.<br />
               <span className="text-gradient-cyan-blue bg-clip-text text-transparent">Enterprise Backend.</span><br />
               Smart Cloud.
@@ -237,7 +217,7 @@ export default function App() {
           </ScrollReveal>
 
           <ScrollReveal delay={300}>
-            <p className="text-slate-400 text-lg md:text-xl font-medium mb-6 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-neutral-600 text-lg md:text-xl font-medium mb-6 max-w-2xl mx-auto leading-relaxed">
               {PORTFOLIO_DATA.hero.subheadline}
             </p>
           </ScrollReveal>
@@ -245,22 +225,28 @@ export default function App() {
           {/* Clickable contact details & location above-the-fold */}
           <ScrollReveal delay={350}>
             <div className="flex flex-wrap items-center justify-center gap-3 mb-10 text-xs font-semibold">
-              <span className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-slate-900/60 border border-white/5 text-slate-300 shadow-sm shadow-black/10">
+              <span className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-neutral-50 border border-neutral-200 text-neutral-700 shadow-sm shadow-neutral-100">
                 {PORTFOLIO_DATA.personal.locationDescription} • {PORTFOLIO_DATA.personal.remoteAvailability}
               </span>
               <a 
                 href={`mailto:${PORTFOLIO_DATA.personal.email}`} 
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-slate-900/60 border border-white/5 text-slate-300 hover:text-cyanNeon hover:border-cyanNeon/40 hover:bg-cyanNeon/5 transition-all duration-300 shadow-sm shadow-black/10"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-neutral-50 border border-neutral-200 text-neutral-700 hover:text-black hover:border-black hover:bg-neutral-100 transition-all duration-300 shadow-sm shadow-neutral-100"
               >
-                📧 {PORTFOLIO_DATA.personal.email}
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 fill-current text-neutral-500" viewBox="0 0 24 24">
+                  <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+                </svg>
+                <span>{PORTFOLIO_DATA.personal.email}</span>
               </a>
               <a 
                 href={PORTFOLIO_DATA.personal.whatsapp} 
                 target="_blank" 
                 rel="noreferrer" 
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-slate-900/60 border border-white/5 text-slate-300 hover:text-emerald-400 hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all duration-300 shadow-sm shadow-black/10"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-neutral-50 border border-neutral-200 text-neutral-700 hover:text-black hover:border-black hover:bg-neutral-100 transition-all duration-300 shadow-sm shadow-neutral-100"
               >
-                💬 {PORTFOLIO_DATA.personal.phone}
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 fill-current text-neutral-500" viewBox="0 0 16 16">
+                  <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                </svg>
+                <span>{PORTFOLIO_DATA.personal.phone}</span>
               </a>
             </div>
           </ScrollReveal>
@@ -269,13 +255,13 @@ export default function App() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-sm sm:max-w-none mx-auto">
               <a 
                 href="#projects" 
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyanNeon to-blueElectric text-white font-bold text-base hover:opacity-95 hover:shadow-[0_0_25px_rgba(6,182,212,0.4)] transition-all duration-300 text-center shadow-lg"
+                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-black text-white font-bold text-base hover:bg-neutral-800 transition-all duration-300 text-center shadow-md border border-black"
               >
                 {PORTFOLIO_DATA.hero.ctaPrimary}
               </a>
               <button 
                 onClick={handleOpenScheduler}
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/5 border border-white/10 hover:border-cyanNeon/50 hover:bg-cyanNeon/10 text-white font-bold text-base transition-all duration-300 text-center"
+                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white border border-neutral-200 hover:border-black hover:bg-neutral-50 text-black font-bold text-base transition-all duration-300 text-center shadow-sm"
               >
                 {PORTFOLIO_DATA.hero.ctaSecondary}
               </button>
@@ -283,8 +269,15 @@ export default function App() {
           </ScrollReveal>
 
           <ScrollReveal delay={600}>
-            <div className="mt-16 md:mt-24 p-6 md:p-8 rounded-2xl glass-panel max-w-3xl mx-auto border-white/5">
-              <p className="text-slate-300 text-base md:text-lg leading-relaxed italic">
+            <div className="mt-16 md:mt-24 p-8 md:p-10 rounded-3xl max-w-3xl mx-auto bg-white border border-neutral-200/80 shadow-sm relative overflow-hidden text-center animate-pulse-glow">
+              {/* Decorative watermark double quote */}
+              <div className="absolute -top-3 -left-3 text-neutral-200/40 pointer-events-none select-none">
+                <svg className="w-20 h-20 fill-current" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                </svg>
+              </div>
+              
+              <p className="text-neutral-800 text-lg md:text-xl font-medium leading-relaxed italic relative z-10 tracking-wide">
                 "{PORTFOLIO_DATA.personal.title}. I help startups and businesses build scalable web & mobile applications with enterprise-grade backend. I optimize cloud costs so you pay only for what you use."
               </p>
             </div>
@@ -292,22 +285,22 @@ export default function App() {
 
           {/* Above-the-fold stats dashboard block */}
           <ScrollReveal delay={650}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-16 pt-8 border-t border-white/5">
-              <div className="text-center p-4 rounded-2xl bg-slate-900/50 border border-white/5 glass-panel">
-                <span className="text-3xl font-extrabold text-cyanNeon block font-mono">{PORTFOLIO_DATA.personal.stats.experience}</span>
-                <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider block mt-1">Experience</span>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-16 pt-8 border-t border-neutral-200">
+              <div className="text-center p-4 rounded-2xl bg-white border border-neutral-200 shadow-sm">
+                <span className="text-3xl font-extrabold text-black block font-mono">{PORTFOLIO_DATA.personal.stats.experience}</span>
+                <span className="text-[11px] text-neutral-500 font-bold uppercase tracking-wider block mt-1">Experience</span>
               </div>
-              <div className="text-center p-4 rounded-2xl bg-slate-900/50 border border-white/5 glass-panel">
-                <span className="text-3xl font-extrabold text-cyanNeon block font-mono">{PORTFOLIO_DATA.personal.stats.projects}</span>
-                <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider block mt-1">Projects Delivered</span>
+              <div className="text-center p-4 rounded-2xl bg-white border border-neutral-200 shadow-sm">
+                <span className="text-3xl font-extrabold text-black block font-mono">{PORTFOLIO_DATA.personal.stats.projects}</span>
+                <span className="text-[11px] text-neutral-500 font-bold uppercase tracking-wider block mt-1">Projects Delivered</span>
               </div>
-              <div className="text-center p-4 rounded-2xl bg-slate-900/50 border border-white/5 glass-panel">
-                <span className="text-3xl font-extrabold text-cyanNeon block font-mono">{PORTFOLIO_DATA.personal.stats.clients}</span>
-                <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider block mt-1">Clients Satisfied</span>
+              <div className="text-center p-4 rounded-2xl bg-white border border-neutral-200 shadow-sm">
+                <span className="text-3xl font-extrabold text-black block font-mono">{PORTFOLIO_DATA.personal.stats.clients}</span>
+                <span className="text-[11px] text-neutral-500 font-bold uppercase tracking-wider block mt-1">Clients Satisfied</span>
               </div>
-              <div className="text-center p-4 rounded-2xl bg-slate-900/50 border border-white/5 glass-panel">
-                <span className="text-3xl font-extrabold text-cyanNeon block font-mono">{PORTFOLIO_DATA.personal.stats.rating}</span>
-                <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider block mt-1">Average Rating</span>
+              <div className="text-center p-4 rounded-2xl bg-white border border-neutral-200 shadow-sm">
+                <span className="text-3xl font-extrabold text-black block font-mono">{PORTFOLIO_DATA.personal.stats.rating}</span>
+                <span className="text-[11px] text-neutral-500 font-bold uppercase tracking-wider block mt-1">Average Rating</span>
               </div>
             </div>
           </ScrollReveal>
@@ -315,13 +308,13 @@ export default function App() {
       </section>
 
       {/* Cloud Strategy visual comparison section */}
-      <section id="strategy" className="py-24 max-w-7xl mx-auto px-6 border-t border-white/5">
+      <section id="strategy" className="py-24 max-w-7xl mx-auto px-6 border-t border-neutral-200">
         <ScrollReveal>
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-black mb-4 tracking-tight">
               {PORTFOLIO_DATA.cloudStrategy.heading}
             </h2>
-            <p className="text-slate-400 text-lg">
+            <p className="text-neutral-600 text-lg">
               {PORTFOLIO_DATA.cloudStrategy.subheading}
             </p>
           </div>
@@ -330,36 +323,36 @@ export default function App() {
         <div className="grid md:grid-cols-3 gap-8">
           {PORTFOLIO_DATA.cloudStrategy.tiers.map((tier, idx) => (
             <ScrollReveal key={idx} delay={idx * 150}>
-              <TiltCard className={`h-full p-8 rounded-2xl glass-panel glass-panel-hover flex flex-col relative transition-all duration-300 ${
-                tier.isPopular ? 'border-cyanNeon/50 shadow-[0_0_20px_rgba(6,182,212,0.15)] bg-slate-900/80' : ''
+              <TiltCard className={`h-full p-8 rounded-2xl flex flex-col relative transition-all duration-300 bg-white border ${
+                tier.isPopular ? 'border-black shadow-lg' : 'border-neutral-200 shadow-sm'
               }`}>
                 
                 {tier.isPopular && (
-                  <div className="absolute -top-3 right-6 px-3 py-1 rounded-full bg-gradient-to-r from-cyanNeon to-blueElectric text-[10px] font-extrabold uppercase tracking-wider text-white">
+                  <div className="absolute -top-3 right-6 px-3 py-1 rounded-full bg-black text-[10px] font-extrabold uppercase tracking-wider text-white">
                     Recommended Option
                   </div>
                 )}
 
                 <div className="mb-6">
-                  <span className="text-xs font-bold text-cyanNeon uppercase tracking-widest bg-cyanNeon/10 px-2.5 py-1 rounded-md">
+                  <span className="text-xs font-bold text-black uppercase tracking-widest bg-neutral-100 px-2.5 py-1 rounded-md border border-neutral-200">
                     {tier.badge}
                   </span>
-                  <h3 className="text-2xl font-bold text-white mt-4">{tier.scale}</h3>
+                  <h3 className="text-2xl font-bold text-black mt-4">{tier.scale}</h3>
                 </div>
 
-                <div className="my-4 pb-6 border-b border-white/5">
-                  <p className="text-slate-400 text-xs font-medium uppercase tracking-wider">Estimated Infrastructure Cost</p>
-                  <p className="text-4xl font-extrabold text-white mt-1.5">{tier.cost}</p>
+                <div className="my-4 pb-6 border-b border-neutral-200">
+                  <p className="text-neutral-500 text-xs font-medium uppercase tracking-wider">Estimated Infrastructure Cost</p>
+                  <p className="text-4xl font-extrabold text-black mt-1.5">{tier.cost}</p>
                 </div>
 
                 <div className="space-y-4 flex-grow">
                   <div>
-                    <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Cloud Provider</p>
-                    <p className="text-slate-200 font-bold text-sm mt-1">{tier.provider}</p>
+                    <p className="text-neutral-500 text-xs font-semibold uppercase tracking-wider">Cloud Provider</p>
+                    <p className="text-neutral-800 font-bold text-sm mt-1">{tier.provider}</p>
                   </div>
                   <div>
-                    <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Architecture Rationale</p>
-                    <p className="text-slate-300 text-sm mt-1 leading-relaxed">{tier.why}</p>
+                    <p className="text-neutral-500 text-xs font-semibold uppercase tracking-wider">Architecture Rationale</p>
+                    <p className="text-neutral-700 text-sm mt-1 leading-relaxed">{tier.why}</p>
                   </div>
                 </div>
               </TiltCard>
@@ -369,7 +362,7 @@ export default function App() {
 
         <ScrollReveal delay={150}>
           <div className="mt-12 text-center">
-            <p className="text-gradient-cyan-blue font-bold text-lg inline-block px-6 py-3 rounded-full bg-white/5 border border-white/5">
+            <p className="text-gradient-cyan-blue font-bold text-lg inline-block px-6 py-3 rounded-full bg-neutral-50 border border-neutral-200">
               "{PORTFOLIO_DATA.cloudStrategy.footerText}"
             </p>
           </div>
@@ -377,28 +370,27 @@ export default function App() {
       </section>
 
       {/* Cloud Cost Calculator Section */}
-      <section id="calculator" className="py-24 max-w-7xl mx-auto px-6 border-t border-white/5">
+      <section id="calculator" className="py-24 max-w-7xl mx-auto px-6 border-t border-neutral-200">
         <ScrollReveal>
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-black mb-4 tracking-tight">
               Interactive Cloud Budget Estimator
             </h2>
-            <p className="text-slate-400 text-lg">
+            <p className="text-neutral-600 text-lg">
               Slide to adjust your estimated active monthly users and see my recommended, cost-optimized deployment architecture.
             </p>
           </div>
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="max-w-4xl mx-auto p-6 md:p-10 rounded-3xl glass-panel border-white/5 relative overflow-hidden shadow-2xl">
-            <div className="absolute -top-24 -left-24 w-48 h-48 bg-cyanNeon/10 rounded-full blur-3xl pointer-events-none"></div>
-
+          <div className="max-w-4xl mx-auto p-6 md:p-10 rounded-3xl border border-neutral-200/80 shadow-md bg-white relative overflow-hidden">
+            
             <div className="relative grid md:grid-cols-12 gap-8 items-center">
               
               <div className="md:col-span-7 space-y-6">
                 <div className="flex justify-between items-center">
-                  <label className="text-slate-300 font-bold text-lg">Target Active Users:</label>
-                  <span className="text-3xl font-extrabold text-cyanNeon font-mono">
+                  <label className="text-slate-800 font-bold text-lg">Target Active Users:</label>
+                  <span className="text-3xl font-extrabold text-indigo-600 font-mono">
                     {calcUsers >= 100000 ? "100,000+" : calcUsers.toLocaleString()}
                   </span>
                 </div>
@@ -410,10 +402,10 @@ export default function App() {
                   step="100" 
                   value={calcUsers}
                   onChange={(e) => setCalcUsers(parseInt(e.target.value))}
-                  className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer focus:outline-none accent-cyanNeon"
+                  className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer focus:outline-none accent-indigo-600"
                 />
 
-                <div className="flex justify-between text-xs text-slate-500 font-bold px-1">
+                <div className="flex justify-between text-[10px] text-slate-400 font-bold px-1 uppercase tracking-wider">
                   <span>100 Users</span>
                   <span className="hidden sm:inline">10K</span>
                   <span>25K Users</span>
@@ -422,41 +414,41 @@ export default function App() {
                   <span>100K+ Users</span>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-white/5 border border-white/5">
-                  <h4 className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Recommended Setup</h4>
-                  <p className="text-slate-200 text-sm leading-relaxed">{calcInfo.setup}</p>
+                <div className="p-5 rounded-2xl bg-neutral-50 border border-neutral-200 shadow-sm">
+                  <h4 className="text-indigo-600 text-xs font-bold uppercase tracking-wider mb-2">Recommended Setup</h4>
+                  <p className="text-slate-700 text-sm leading-relaxed font-medium">{calcInfo.setup}</p>
                 </div>
               </div>
 
-              <div className="md:col-span-5 p-6 rounded-2xl bg-slate-900/90 border border-white/10 space-y-6 relative">
+              <div className="md:col-span-5 p-6 rounded-2xl bg-white border border-neutral-200 space-y-6 relative text-black shadow-sm">
                 <div>
-                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-cyanNeon bg-cyanNeon/10 px-2 py-0.5 rounded">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-neutral-600 bg-neutral-100 border border-neutral-200 px-2.5 py-1 rounded">
                     {calcInfo.tier}
                   </span>
-                  <h4 className="text-slate-400 text-xs font-bold uppercase tracking-wider mt-4">Estimated Cloud Bill</h4>
+                  <h4 className="text-neutral-500 text-xs font-bold uppercase tracking-wider mt-5">Estimated Cloud Bill</h4>
                   <div className="flex items-baseline gap-2 mt-1">
-                    <span className="text-4xl font-extrabold text-white">{calcInfo.cost}</span>
+                    <span className="text-4xl font-extrabold text-black font-mono">{calcInfo.cost}</span>
                   </div>
                 </div>
 
-                <div className="space-y-3.5 pt-4 border-t border-white/5">
+                <div className="space-y-3.5 pt-4 border-t border-neutral-200">
                   <div>
-                    <span className="text-xs text-slate-400 block">Suggested Provider:</span>
-                    <span className="text-sm font-bold text-slate-200">{calcInfo.provider}</span>
+                    <span className="text-xs text-neutral-500 block">Suggested Provider:</span>
+                    <span className="text-sm font-bold text-neutral-800">{calcInfo.provider}</span>
                   </div>
                   <div>
-                    <span className="text-xs text-slate-400 block">Why this configuration:</span>
-                    <span className="text-xs text-slate-300 leading-relaxed block mt-0.5">{calcInfo.why}</span>
+                    <span className="text-xs text-neutral-500 block">Why this configuration:</span>
+                    <span className="text-xs text-neutral-600 leading-relaxed block mt-0.5">{calcInfo.why}</span>
                   </div>
                 </div>
 
-                <div className="bg-emerald-500/10 border border-emerald-500/20 p-3.5 rounded-xl flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 flex-shrink-0">
+                <div className="bg-neutral-50 border border-neutral-200 p-3.5 rounded-xl flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center flex-shrink-0 text-sm">
                     ⚡
                   </div>
                   <div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400 block">Projected Savings</span>
-                    <span className="text-sm font-bold text-emerald-300 block">{calcInfo.savings}</span>
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-neutral-500 block">Projected Savings</span>
+                    <span className="text-sm font-bold text-emerald-600 block mt-0.5">{calcInfo.savings}</span>
                   </div>
                 </div>
               </div>
@@ -466,13 +458,13 @@ export default function App() {
       </section>
 
       {/* Services Grid Section */}
-      <section id="services" className="py-24 max-w-7xl mx-auto px-6 border-t border-white/5">
+      <section id="services" className="py-24 max-w-7xl mx-auto px-6 border-t border-neutral-200">
         <ScrollReveal>
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-black mb-4 tracking-tight">
               Services I Offer
             </h2>
-            <p className="text-slate-400 text-lg">
+            <p className="text-neutral-600 text-lg">
               Robust architectures, fluid animations, dynamic data layer tuning, and cloud-native solutions.
             </p>
           </div>
@@ -481,16 +473,16 @@ export default function App() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {PORTFOLIO_DATA.services.map((svc, idx) => (
             <ScrollReveal key={idx} delay={idx * 100}>
-              <TiltCard className="p-8 rounded-2xl glass-panel glass-panel-hover flex flex-col h-full transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-cyanNeon to-blueElectric flex items-center justify-center mb-6 shadow-md shadow-cyanNeon/10">
+              <TiltCard className="p-8 rounded-2xl border border-neutral-200 bg-white hover:bg-neutral-50/50 flex flex-col h-full transition-all duration-300 shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center mb-6 shadow-sm">
                   {renderIcon(svc.icon, "w-6 h-6 text-white")}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{svc.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">{svc.description}</p>
+                <h3 className="text-xl font-bold text-black mb-3">{svc.title}</h3>
+                <p className="text-neutral-600 text-sm leading-relaxed mb-6 flex-grow">{svc.description}</p>
                 
-                <div className="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-white/5">
+                <div className="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-slate-200">
                   {svc.tech.map((t, tIdx) => (
-                    <span key={tIdx} className="text-[10px] font-semibold bg-white/5 border border-white/5 text-slate-300 px-2 py-0.5 rounded">
+                    <span key={tIdx} className="text-[10px] font-semibold bg-neutral-100 border border-neutral-200 text-neutral-700 px-2 py-0.5 rounded">
                       {t}
                     </span>
                   ))}
@@ -502,29 +494,29 @@ export default function App() {
       </section>
 
       {/* Featured Projects Section */}
-      <section id="projects" className="py-24 max-w-7xl mx-auto px-6 border-t border-white/5">
+      <section id="projects" className="py-24 max-w-7xl mx-auto px-6 border-t border-neutral-200">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <ScrollReveal>
             <div className="max-w-2xl">
-              <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+              <h2 className="text-3xl md:text-5xl font-extrabold text-black mb-4 tracking-tight">
                 Featured Systems & Applications
               </h2>
-              <p className="text-slate-400 text-lg">
+              <p className="text-neutral-600 text-lg">
                 A selection of production-ready reference builds deploying Java backend and React frontends at scale.
               </p>
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={150}>
-            <div className="flex flex-wrap gap-2 p-1.5 rounded-xl bg-white/5 border border-white/5 self-start">
+            <div className="flex flex-wrap gap-2 p-1.5 rounded-xl bg-neutral-50 border border-neutral-200 self-start">
               {["All", "Web Apps", "Mobile Apps", "Cloud Optimized"].map((filter) => (
                 <button
                   key={filter}
                   onClick={() => setSelectedFilter(filter)}
                   className={`px-4 py-2 rounded-lg text-xs font-bold transition-all duration-300 ${
                     selectedFilter === filter
-                      ? 'bg-gradient-to-r from-cyanNeon to-blueElectric text-white shadow-md'
-                      : 'text-slate-400 hover:text-white'
+                      ? 'bg-black text-white shadow-sm'
+                      : 'text-neutral-500 hover:text-black border border-transparent'
                   }`}
                 >
                   {filter}
@@ -537,34 +529,36 @@ export default function App() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, idx) => (
             <ScrollReveal key={project.id} delay={idx * 50}>
-              <div className="p-6 rounded-2xl glass-panel glass-panel-hover flex flex-col h-full relative transition-all duration-300 border-white/5">
+              <div className="p-6 rounded-2xl border border-neutral-200 bg-white flex flex-col h-full relative transition-all duration-300 shadow-sm hover:border-neutral-400/60">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-[10px] font-extrabold text-cyanNeon uppercase tracking-wider bg-cyanNeon/10 px-2 py-0.5 rounded">
+                  <span className="text-[10px] font-extrabold text-black uppercase tracking-wider bg-neutral-100 px-2 py-0.5 rounded border border-neutral-200">
                     {project.cloud}
                   </span>
-                  <div className="flex items-center gap-1 bg-white/5 border border-white/5 px-2 py-0.5 rounded text-xs font-bold text-slate-300">
-                    {renderIcon('star', 'w-3.5 h-3.5')}
+                  <div className="flex items-center gap-1 bg-neutral-50 border border-neutral-200 px-2 py-0.5 rounded text-xs font-bold text-neutral-700">
+                    <svg className="w-3.5 h-3.5 text-black fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
                     <span>{project.rating.toFixed(1)}</span>
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">{project.description}</p>
+                <h3 className="text-xl font-bold text-black mb-2">{project.title}</h3>
+                <p className="text-neutral-600 text-sm leading-relaxed mb-6 flex-grow">{project.description}</p>
 
-                <div className="grid grid-cols-2 gap-3 p-3 rounded-xl bg-white/5 border border-white/5 mb-4 text-xs">
+                <div className="grid grid-cols-2 gap-3 p-3 rounded-xl bg-neutral-50 border border-neutral-200 mb-4 text-xs">
                   <div>
-                    <span className="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">Volume Scale</span>
-                    <span className="text-slate-200 font-bold block mt-0.5">{project.users}</span>
+                    <span className="text-[10px] text-neutral-500 block uppercase font-bold tracking-wider">Volume Scale</span>
+                    <span className="text-neutral-800 font-bold block mt-0.5">{project.users}</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">Estimated Cost</span>
-                    <span className="text-emerald-400 font-bold block mt-0.5">{project.cost}</span>
+                    <span className="text-[10px] text-neutral-500 block uppercase font-bold tracking-wider">Estimated Cost</span>
+                    <span className="text-black font-bold block mt-0.5">{project.cost}</span>
                   </div>
                 </div>
 
                 <div className="flex flex-wrap gap-1.5 mb-6">
                   {project.tech.map((t, tIdx) => (
-                    <span key={tIdx} className="text-[10px] font-bold text-slate-300 bg-slate-900 border border-white/5 px-2 py-0.5 rounded">
+                    <span key={tIdx} className="text-[10px] font-bold text-neutral-700 bg-neutral-50 border border-neutral-200 px-2 py-0.5 rounded">
                       {t}
                     </span>
                   ))}
@@ -572,7 +566,7 @@ export default function App() {
 
                 <button
                   onClick={() => setDemoProject(project)}
-                  className="w-full py-3 rounded-xl bg-white/5 border border-white/10 hover:border-cyanNeon/50 hover:bg-cyanNeon/10 text-slate-200 hover:text-white font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2"
+                  className="w-full py-3 rounded-xl bg-black text-white hover:bg-neutral-800 font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 border border-black shadow-sm"
                 >
                   <span>Simulate Live Demo</span>
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -586,46 +580,46 @@ export default function App() {
       </section>
 
       {/* Why Choose Me section */}
-      <section id="why-me" className="py-24 max-w-7xl mx-auto px-6 border-t border-white/5">
+      <section id="why-me" className="py-24 max-w-7xl mx-auto px-6 border-t border-neutral-200">
         <div className="grid lg:grid-cols-12 gap-16 items-center">
           
           <div className="lg:col-span-5 space-y-8">
             <ScrollReveal>
-              <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+              <h2 className="text-3xl md:text-5xl font-extrabold text-black tracking-tight leading-tight">
                 Why Startups Choose Me to Scale
               </h2>
-              <p className="text-slate-400 text-lg leading-relaxed mt-4">
+              <p className="text-neutral-600 text-lg leading-relaxed mt-4">
                 I deliver architectural depth. Your deployment is planned for costs and optimized for load-spikes before the first line of code goes live.
               </p>
             </ScrollReveal>
 
             <div className="grid grid-cols-2 gap-4">
               <ScrollReveal delay={100}>
-                <div className="p-4 rounded-xl bg-white/5 border border-white/5 space-y-1">
-                  <span className="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">Professional</span>
-                  <span className="text-2xl font-extrabold text-cyanNeon block">{PORTFOLIO_DATA.personal.stats.experience}</span>
-                  <span className="text-xs text-slate-300 block">Industry Experience</span>
+                <div className="p-4 rounded-xl bg-white border border-neutral-200 shadow-sm space-y-1">
+                  <span className="text-[10px] text-neutral-500 block uppercase font-bold tracking-wider">Professional</span>
+                  <span className="text-2xl font-extrabold text-black block">{PORTFOLIO_DATA.personal.stats.experience}</span>
+                  <span className="text-xs text-neutral-600 block">Industry Experience</span>
                 </div>
               </ScrollReveal>
               <ScrollReveal delay={150}>
-                <div className="p-4 rounded-xl bg-white/5 border border-white/5 space-y-1">
-                  <span className="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">Delivered Systems</span>
-                  <span className="text-2xl font-extrabold text-cyanNeon block">{PORTFOLIO_DATA.personal.stats.projects}</span>
-                  <span className="text-xs text-slate-300 block">Production Deployments</span>
+                <div className="p-4 rounded-xl bg-white border border-neutral-200 shadow-sm space-y-1">
+                  <span className="text-[10px] text-neutral-500 block uppercase font-bold tracking-wider">Delivered Systems</span>
+                  <span className="text-2xl font-extrabold text-black block">{PORTFOLIO_DATA.personal.stats.projects}</span>
+                  <span className="text-xs text-neutral-600 block">Production Deployments</span>
                 </div>
               </ScrollReveal>
               <ScrollReveal delay={200}>
-                <div className="p-4 rounded-xl bg-white/5 border border-white/5 space-y-1">
-                  <span className="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">Happy Partners</span>
-                  <span className="text-2xl font-extrabold text-cyanNeon block">{PORTFOLIO_DATA.personal.stats.clients}</span>
-                  <span className="text-xs text-slate-300 block">Clients Worldwide</span>
+                <div className="p-4 rounded-xl bg-white border border-neutral-200 shadow-sm space-y-1">
+                  <span className="text-[10px] text-neutral-500 block uppercase font-bold tracking-wider">Happy Partners</span>
+                  <span className="text-2xl font-extrabold text-black block">{PORTFOLIO_DATA.personal.stats.clients}</span>
+                  <span className="text-xs text-neutral-600 block">Clients Worldwide</span>
                 </div>
               </ScrollReveal>
               <ScrollReveal delay={250}>
-                <div className="p-4 rounded-xl bg-white/5 border border-white/5 space-y-1">
-                  <span className="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">Average Rating</span>
-                  <span className="text-2xl font-extrabold text-cyanNeon block">{PORTFOLIO_DATA.personal.stats.rating}</span>
-                  <span className="text-xs text-slate-300 block">Verified Feedbacks</span>
+                <div className="p-4 rounded-xl bg-white border border-neutral-200 shadow-sm space-y-1">
+                  <span className="text-[10px] text-neutral-500 block uppercase font-bold tracking-wider">Average Rating</span>
+                  <span className="text-2xl font-extrabold text-black block">{PORTFOLIO_DATA.personal.stats.rating}</span>
+                  <span className="text-xs text-neutral-600 block">Verified Feedbacks</span>
                 </div>
               </ScrollReveal>
             </div>
@@ -634,12 +628,12 @@ export default function App() {
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-8">
             {PORTFOLIO_DATA.whyChooseMe.map((item, idx) => (
               <ScrollReveal key={idx} delay={idx * 100}>
-                <div className="p-6 rounded-2xl bg-slate-900/50 border border-white/5 space-y-3">
-                  <div className="w-8 h-8 rounded-lg bg-cyanNeon/10 flex items-center justify-center font-bold text-cyanNeon">
+                <div className="p-6 rounded-2xl bg-white border border-neutral-200 shadow-sm space-y-3 hover:border-neutral-400/60 transition-all duration-300">
+                  <div className="w-8 h-8 rounded-lg bg-neutral-100 border border-neutral-200 flex items-center justify-center font-bold text-black">
                     {idx + 1}
                   </div>
-                  <h3 className="text-lg font-bold text-white">{item.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{item.description}</p>
+                  <h3 className="text-lg font-bold text-black">{item.title}</h3>
+                  <p className="text-neutral-600 text-sm leading-relaxed">{item.description}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -648,13 +642,13 @@ export default function App() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 max-w-7xl mx-auto px-6 border-t border-white/5">
+      <section className="py-24 max-w-7xl mx-auto px-6 border-t border-neutral-200">
         <ScrollReveal>
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-black mb-4 tracking-tight">
               What Startup Founders Say
             </h2>
-            <p className="text-slate-400 text-lg">
+            <p className="text-neutral-600 text-lg">
               Real numbers, real migrations, real uptime assurances.
             </p>
           </div>
@@ -663,24 +657,24 @@ export default function App() {
         <div className="grid md:grid-cols-3 gap-8">
           {PORTFOLIO_DATA.testimonials.map((test, idx) => (
             <ScrollReveal key={idx} delay={idx * 150}>
-              <div className="p-8 rounded-2xl glass-panel flex flex-col h-full justify-between relative border-white/5">
-                <div className="absolute top-6 right-8 text-white/5 pointer-events-none">
-                  <svg className="w-16 h-16 fill-current" viewBox="0 0 24 24">
+              <div className="p-8 rounded-2xl border border-neutral-200 bg-white shadow-sm flex flex-col h-full justify-between relative hover:border-neutral-400/60 transition-all duration-300">
+                <div className="absolute top-6 right-8 text-neutral-100 pointer-events-none">
+                  <svg className="w-16 h-16 fill-current animate-none" viewBox="0 0 24 24">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
                 </div>
 
                 <div className="space-y-6">
-                  <span className="inline-block px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-bold text-emerald-400">
+                  <span className="inline-block px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-bold text-black">
                     ⚡ {test.scale}
                   </span>
-                  <p className="text-slate-300 text-sm leading-relaxed italic relative z-10 font-medium">
+                  <p className="text-neutral-700 text-sm leading-relaxed italic relative z-10 font-medium">
                     "{test.quote}"
                   </p>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-white/5">
-                  <p className="text-slate-200 font-bold text-sm">{test.author}</p>
+                <div className="mt-8 pt-4 border-t border-neutral-100">
+                  <p className="text-black font-bold text-sm">{test.author}</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -689,10 +683,10 @@ export default function App() {
       </section>
 
       {/* Partners Grayscale Logos Row */}
-      <section className="py-16 max-w-7xl mx-auto px-6 border-t border-white/5">
+      <section className="py-16 max-w-7xl mx-auto px-6 border-t border-neutral-200">
         <ScrollReveal>
           <div className="text-center mb-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+            <span className="text-xs font-bold uppercase tracking-wider text-neutral-500">
               Cloud Ecosystem Compatibility
             </span>
           </div>
@@ -703,7 +697,7 @@ export default function App() {
             {PORTFOLIO_DATA.partners.map((partner, idx) => (
               <div 
                 key={idx} 
-                className="text-slate-500 hover:text-cyanNeon transition-all duration-300 font-extrabold text-xl md:text-2xl tracking-widest uppercase cursor-default filter grayscale hover:grayscale-0"
+                className="text-neutral-400 hover:text-black transition-all duration-300 font-extrabold text-xl md:text-2xl tracking-widest uppercase cursor-default filter grayscale hover:grayscale-0"
               >
                 {partner}
               </div>
@@ -713,109 +707,122 @@ export default function App() {
       </section>
 
       {/* Ready to Scale Section (Centered CTA) */}
-      <section id="contact" className="py-24 max-w-4xl mx-auto px-6 border-t border-white/5 relative text-center">
-        <ScrollReveal>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
-            Ready to Build Your Cloud Infrastructure?
-          </h2>
-          <p className="text-slate-400 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-            Let's design a cost-optimized, highly scalable system tailored to your startup. Schedule a free 30-minute architecture strategy session or reach out directly.
-          </p>
+      <section id="contact" className="py-24 bg-[#f5f5f7] border-t border-neutral-200 relative text-center w-full">
+        <div className="max-w-4xl mx-auto px-6">
+          <ScrollReveal>
+            <div className="p-8 md:p-12 rounded-3xl bg-white border border-neutral-200/80 shadow-md text-black relative overflow-hidden">
+              <h2 className="text-3xl md:text-5xl font-extrabold text-black mb-6 tracking-tight">
+                Ready to Build Your Cloud Infrastructure?
+              </h2>
+              <p className="text-neutral-600 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+                Let's design a cost-optimized, highly scalable system tailored to your startup. Schedule a free 30-minute architecture strategy session or reach out directly.
+              </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-12">
-            <button
-              onClick={handleOpenScheduler}
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyanNeon to-blueElectric text-white font-bold text-base hover:opacity-95 hover:shadow-[0_0_25px_rgba(6,182,212,0.4)] transition-all duration-300 text-center flex items-center justify-center gap-2"
-            >
-              📅 Schedule Strategy Call
-            </button>
-            <a
-              href={PORTFOLIO_DATA.personal.whatsapp}
-              target="_blank"
-              rel="noreferrer"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-emerald-500/10 text-white font-bold text-base transition-all duration-300 text-center flex items-center justify-center gap-2"
-            >
-              💬 Chat on WhatsApp
-            </a>
-          </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-12">
+                <button
+                  onClick={handleOpenScheduler}
+                  className="w-full sm:w-auto px-8 py-4 rounded-xl bg-black text-white font-bold text-base hover:bg-neutral-800 transition-all duration-300 text-center flex items-center justify-center gap-2 border border-black shadow-sm"
+                >
+                  📅 Schedule Strategy Call
+                </button>
+                <a
+                  href={PORTFOLIO_DATA.personal.whatsapp}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white border border-[#25D366] font-bold text-base transition-all duration-300 text-center flex items-center justify-center gap-2.5 shadow-[0_4px_20px_rgba(37,211,102,0.3)] hover:scale-105"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 fill-current" viewBox="0 0 16 16">
+                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                  </svg>
+                  <span>Chat on WhatsApp</span>
+                </a>
+              </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-white/5 max-w-3xl mx-auto text-left text-xs text-slate-400">
-            <div className="flex items-center gap-2.5">
-              <span className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-[10px] font-bold">✓</span>
-              <span>24h Response</span>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-neutral-200 max-w-3xl mx-auto text-left text-xs text-neutral-600">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-5 h-5 rounded-full bg-neutral-100 border border-neutral-200 flex items-center justify-center text-neutral-800 text-[10px] font-bold">✓</span>
+                  <span>24h Response</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <span className="w-5 h-5 rounded-full bg-neutral-100 border border-neutral-200 flex items-center justify-center text-neutral-800 text-[10px] font-bold">✓</span>
+                  <span>Free 30-min Review</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <span className="w-5 h-5 rounded-full bg-neutral-100 border border-neutral-200 flex items-center justify-center text-neutral-800 text-[10px] font-bold">✓</span>
+                  <span>No Discovery Fee</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <span className="w-5 h-5 rounded-full bg-neutral-100 border border-neutral-200 flex items-center justify-center text-neutral-800 text-[10px] font-bold">✓</span>
+                  <span>NDAs Signed</span>
+                </div>
+              </div>
             </div>
-            <div className="flex items-center gap-2.5">
-              <span className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-[10px] font-bold">✓</span>
-              <span>Free 30-min Review</span>
-            </div>
-            <div className="flex items-center gap-2.5">
-              <span className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-[10px] font-bold">✓</span>
-              <span>No Discovery Fee</span>
-            </div>
-            <div className="flex items-center gap-2.5">
-              <span className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-[10px] font-bold">✓</span>
-              <span>NDAs Signed</span>
-            </div>
-          </div>
-        </ScrollReveal>
+          </ScrollReveal>
+        </div>
       </section>
 
       {/* Footer Details */}
-      <footer className="bg-slate-950 border-t border-white/5 py-12 md:py-16">
+      <footer className="bg-[#f5f5f7] border-t border-neutral-200 py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
           
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyanNeon to-blueElectric flex items-center justify-center font-bold text-white text-sm">
+              <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center font-bold text-white text-sm">
                 RP
               </div>
-              <span className="font-bold text-white">{PORTFOLIO_DATA.personal.name}</span>
+              <span className="font-bold text-black">{PORTFOLIO_DATA.personal.name}</span>
             </div>
-            <p className="text-slate-400 text-xs leading-relaxed">
+            <p className="text-neutral-500 text-xs leading-relaxed">
               Enterprise-grade backend pipelines coupled with lightweight, fast Web/Mobile frontends. Cost-centric deployments guaranteed.
             </p>
           </div>
 
           <div>
-            <h4 className="text-slate-200 text-xs font-bold uppercase tracking-wider mb-4">Availability</h4>
+            <h4 className="text-black text-xs font-bold uppercase tracking-wider mb-4">Availability</h4>
             <div className="space-y-2 text-xs">
-              <p className="text-slate-400">📍 {PORTFOLIO_DATA.personal.location}</p>
-              <p className="text-slate-400">🌍 {PORTFOLIO_DATA.personal.remoteAvailability}</p>
-              <p className="text-emerald-400 font-semibold">Available for freelance contracts</p>
+              <p className="text-neutral-600">📍 {PORTFOLIO_DATA.personal.location}</p>
+              <p className="text-neutral-600">🌍 {PORTFOLIO_DATA.personal.remoteAvailability}</p>
+              <p className="text-black font-semibold">Available for freelance contracts</p>
             </div>
           </div>
 
           <div>
-            <h4 className="text-slate-200 text-xs font-bold uppercase tracking-wider mb-4">Quick Links</h4>
-            <div className="flex flex-col gap-2.5 text-xs text-slate-400">
-              <a href="#services" className="hover:text-cyanNeon transition-colors">Developer Services</a>
-              <a href="#strategy" className="hover:text-cyanNeon transition-colors">Infrastructure Strategy</a>
-              <a href="#projects" className="hover:text-cyanNeon transition-colors">Reference Builds</a>
-              <a href="#calculator" className="hover:text-cyanNeon transition-colors">Cloud Budget Tool</a>
+            <h4 className="text-black text-xs font-bold uppercase tracking-wider mb-4">Quick Links</h4>
+            <div className="flex flex-col gap-2.5 text-xs text-neutral-500">
+              <a href="#services" className="hover:text-black transition-colors">Developer Services</a>
+              <a href="#strategy" className="hover:text-black transition-colors">Infrastructure Strategy</a>
+              <a href="#projects" className="hover:text-black transition-colors">Reference Builds</a>
+              <a href="#calculator" className="hover:text-black transition-colors">Cloud Budget Tool</a>
             </div>
           </div>
 
           <div className="space-y-4">
-            <h4 className="text-slate-200 text-xs font-bold uppercase tracking-wider mb-2">Connect</h4>
-            <a href={`mailto:${PORTFOLIO_DATA.personal.email}`} className="text-slate-300 hover:text-cyanNeon text-sm font-bold block transition-colors">
-              📧 {PORTFOLIO_DATA.personal.email}
+            <h4 className="text-black text-xs font-bold uppercase tracking-wider mb-2">Connect</h4>
+            <a href={`mailto:${PORTFOLIO_DATA.personal.email}`} className="text-neutral-700 hover:text-black text-sm font-bold flex items-center gap-2 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 fill-current text-neutral-500" viewBox="0 0 24 24">
+                <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+              </svg>
+              <span>{PORTFOLIO_DATA.personal.email}</span>
             </a>
-            <a href={PORTFOLIO_DATA.personal.whatsapp} target="_blank" rel="noreferrer" className="text-slate-300 hover:text-emerald-400 text-sm font-bold block transition-colors">
-              💬 {PORTFOLIO_DATA.personal.phone} (WhatsApp)
+            <a href={PORTFOLIO_DATA.personal.whatsapp} target="_blank" rel="noreferrer" className="text-neutral-700 hover:text-black text-sm font-bold flex items-center gap-2 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 fill-current text-neutral-500" viewBox="0 0 16 16">
+                <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+              </svg>
+              <span>{PORTFOLIO_DATA.personal.phone} (WhatsApp)</span>
             </a>
             
             <div className="flex gap-4 pt-2">
-              <a href={PORTFOLIO_DATA.personal.github} className="text-slate-500 hover:text-cyanNeon transition-colors" title="GitHub">
+              <a href={PORTFOLIO_DATA.personal.github} className="text-neutral-400 hover:text-black transition-colors" title="GitHub">
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                 </svg>
               </a>
-              <a href={PORTFOLIO_DATA.personal.linkedin} className="text-slate-500 hover:text-cyanNeon transition-colors" title="LinkedIn">
+              <a href={PORTFOLIO_DATA.personal.linkedin} className="text-neutral-400 hover:text-black transition-colors" title="LinkedIn">
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
               </a>
-              <a href={PORTFOLIO_DATA.personal.twitter} className="text-slate-500 hover:text-cyanNeon transition-colors" title="Twitter">
+              <a href={PORTFOLIO_DATA.personal.twitter} className="text-neutral-400 hover:text-black transition-colors" title="Twitter">
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
                 </svg>
@@ -824,7 +831,7 @@ export default function App() {
           </div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between text-xs text-slate-500">
+        <div className="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-neutral-200 flex flex-col md:flex-row justify-between text-xs text-neutral-500">
           <span>© 2026 {PORTFOLIO_DATA.personal.name}. All rights reserved.</span>
           <span className="mt-2 md:mt-0">Design inspired by SaaS leaders. Engineered for performant cloud distribution.</span>
         </div>
@@ -835,18 +842,18 @@ export default function App() {
         href={PORTFOLIO_DATA.personal.whatsapp}
         target="_blank"
         rel="noreferrer"
-        className="fixed bottom-24 right-6 z-30 flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white shadow-[0_4px_25px_rgba(16,185,129,0.4)] border border-emerald-400/30 hover:scale-110 transition-transform duration-300"
+        className="fixed bottom-24 right-6 z-30 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-[0_6px_24px_rgba(37,211,102,0.55)] border border-[#25D366]/30 hover:scale-110 transition-all duration-300"
         title="Chat on WhatsApp"
       >
-        <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.45 5.516 0 10.007-4.49 10.01-10.014.002-2.674-1.037-5.187-2.927-7.08C16.545 1.617 14.037.58 11.36.577c-5.52 0-10.01 4.49-10.013 10.016a9.917 9.917 0 001.536 5.223L1.87 21.05l5.221-1.37.003-.004.053-.031zm10.748-7.399c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.668.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.15-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.568-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 fill-current" viewBox="0 0 16 16">
+          <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
         </svg>
       </a>
 
       {/* Floating Calendly Booking Trigger */}
       <button 
         onClick={handleOpenScheduler}
-        className="fixed bottom-6 right-6 z-30 flex items-center gap-2.5 px-5 py-3 rounded-full bg-gradient-to-r from-cyanNeon to-blueElectric text-white text-sm font-bold shadow-[0_4px_25px_rgba(6,182,212,0.4)] border border-cyanNeon/30 hover:scale-105 transition-transform"
+        className="fixed bottom-6 right-6 z-30 flex items-center gap-2.5 px-5 py-3 rounded-full bg-black text-white text-sm font-bold shadow-md border border-neutral-800 hover:scale-105 transition-transform"
       >
         <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
