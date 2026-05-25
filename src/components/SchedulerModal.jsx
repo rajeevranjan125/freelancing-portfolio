@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 export default function SchedulerModal({ personal, onClose }) {
   const [schedulerStep, setSchedulerStep] = useState(1); // 1: Date/Time, 2: Details, 3: Success
-  const [selectedDate, setSelectedDate] = useState("2026-06-08"); // Mocking dates in June
+  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [selectedTime, setSelectedTime] = useState("");
-  const [schedulerForm, setSchedulerForm] = useState({ name: "", email: "", notes: "", additionalMessage: "" });
+  const [schedulerForm, setSchedulerForm] = useState({ name: "", email: "", phone: "", notes: "", additionalMessage: "" });
   const [schedulerErrors, setSchedulerErrors] = useState({});
   const [meetLink] = useState("https://meet.google.com/pin-sbjf-wfj");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,8 +34,20 @@ export default function SchedulerModal({ personal, onClose }) {
     return errors;
   };
 
-  const generateMeetLink = () => {
-    return "https://meet.google.com/pin-sbjf-wfj";
+  const generateTimeSlots = () => {
+    const slots = [];
+    for (let h = 19; h <= 23; h++) {
+      const hour = (h - 12).toString().padStart(2, '0');
+      slots.push(`${hour}:00 PM`);
+      slots.push(`${hour}:30 PM`);
+    }
+    slots.push(`12:00 AM`);
+    slots.push(`12:30 AM`);
+    for (let h = 1; h <= 7; h++) {
+      slots.push(`0${h}:00 AM`);
+      if (h < 7) slots.push(`0${h}:30 AM`);
+    }
+    return slots;
   };
 
   const handleCopyMeetLink = () => {
@@ -57,29 +69,25 @@ export default function SchedulerModal({ personal, onClose }) {
     setIsSubmitting(true);
     setSubmitError("");
 
-    const formattedDate = `June ${selectedDate.split('-')[2]}, 2026`;
-    // Construct Web3Forms payload
+    let formattedDate = selectedDate;
+    try {
+      formattedDate = new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    } catch(e) {}
+    const submittedAt = new Date().toLocaleString('en-US');
+
+    // Construct Web3Forms payload with specific ordered fields
     const data = {
       access_key: personal.web3formsKey || "0a7369aa-badc-4166-81ce-46792f864ecf",
-      subject: `New Strategy Call Booking: ${schedulerForm.name}`,
-      from_name: "Portfolio Strategy Scheduler",
-      name: schedulerForm.name,
-      email: schedulerForm.email,
-      consultation_date: formattedDate,
-      consultation_time: selectedTime,
-      prd_requirements: schedulerForm.notes,
-      additional_message: schedulerForm.additionalMessage || "None",
-      message: `
-Strategy Session Booked!
-------------------------
-Client Name: ${schedulerForm.name}
-Client Email: ${schedulerForm.email}
-Date: ${formattedDate}
-Time: ${selectedTime}
-PRD/Requirements: ${schedulerForm.notes}
-Additional Message: ${schedulerForm.additionalMessage || "None"}
-Google Meet Link: https://meet.google.com/pin-sbjf-wfj
-      `.trim()
+      replyto: schedulerForm.email,
+      "Name": schedulerForm.name,
+      "Email": schedulerForm.email,
+      "Phone Number": schedulerForm.phone || "Not provided",
+      "PRD Requirements": schedulerForm.notes,
+      "Consultation Date": formattedDate,
+      "Time": selectedTime,
+      "Submitted At": submittedAt,
+      "Additional Message": schedulerForm.additionalMessage || "None",
+      "Google Meet Link": "https://meet.google.com/pin-sbjf-wfj"
     };
 
     try {
@@ -165,68 +173,31 @@ Google Meet Link: https://meet.google.com/pin-sbjf-wfj
                 </button>
               </div>
               
-              {/* Simulated Mini Calendar for June 2026 */}
+              {/* Date Selection */}
               <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2 flex justify-between">
-                  <span>June 2026</span>
-                  <span>Mon - Fri Slots Open</span>
-                </div>
-                <div className="grid grid-cols-7 gap-1.5 text-center text-xs text-neutral-600 border border-neutral-200 p-3 rounded-2xl bg-neutral-50">
-                  {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => (
-                    <span key={i} className="font-bold text-[10px] text-neutral-400 py-1">{d}</span>
-                  ))}
-                  
-                  {/* Blank days for start of month (June 1st, 2026 is Monday, so 1 blank Sunday offset) */}
-                  <span key="blank-0" />
-                  
-                  {/* Days grid */}
-                  {Array.from({ length: 30 }).map((_, i) => {
-                    const dayNum = i + 1;
-                    const dateStr = `2026-06-${dayNum.toString().padStart(2, '0')}`;
-                    // Exclude weekends (Day 6, 7, 13, 14, 20, 21, 27, 28 are weekends)
-                    const isWeekend = [6, 7, 13, 14, 20, 21, 27, 28].includes(dayNum);
-                    const isSelected = selectedDate === dateStr;
-
-                    return (
-                      <button
-                        key={i}
-                        type="button"
-                        disabled={isWeekend}
-                        onClick={() => setSelectedDate(dateStr)}
-                        className={`py-2 rounded-lg font-bold transition-all duration-300 ${
-                          isWeekend 
-                            ? 'text-neutral-300 cursor-not-allowed font-normal'
-                            : isSelected
-                              ? 'bg-black text-white shadow-sm'
-                              : 'text-neutral-800 hover:bg-neutral-200'
-                        }`}
-                      >
-                        {dayNum}
-                      </button>
-                    );
-                  })}
-                </div>
+                <label className="text-xs font-bold uppercase tracking-wider text-neutral-500 block mb-2">Select Date</label>
+                <input 
+                  type="date" 
+                  min={new Date().toISOString().split('T')[0]}
+                  value={selectedDate}
+                  onChange={(e) => setSelectedDate(e.target.value)}
+                  className="w-full bg-white border border-neutral-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black text-black transition-colors"
+                />
               </div>
 
-              {/* Time Slots grid */}
+              {/* Time Selection */}
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 block mb-2">Available Time Slots (Your Timezone)</span>
-                <div className="grid grid-cols-3 gap-2">
-                  {["09:00 AM", "11:30 AM", "02:00 PM", "04:30 PM"].map((t) => (
-                    <button
-                      key={t}
-                      type="button"
-                      onClick={() => setSelectedTime(t)}
-                      className={`py-2 rounded-xl text-xs font-bold border transition-all duration-300 ${
-                        selectedTime === t
-                          ? 'border-black bg-black text-white'
-                          : 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:border-neutral-400'
-                      }`}
-                    >
-                      {t}
-                    </button>
+                <label className="text-xs font-bold uppercase tracking-wider text-neutral-500 block mb-2">Select Time (7 PM - 7 AM)</label>
+                <select
+                  value={selectedTime}
+                  onChange={(e) => setSelectedTime(e.target.value)}
+                  className="w-full bg-white border border-neutral-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black text-black transition-colors"
+                >
+                  <option value="" disabled>Choose a time slot...</option>
+                  {generateTimeSlots().map((t) => (
+                    <option key={t} value={t}>{t}</option>
                   ))}
-                </div>
+                </select>
               </div>
 
               <button
@@ -250,7 +221,7 @@ Google Meet Link: https://meet.google.com/pin-sbjf-wfj
               <h3 className="text-lg font-bold text-black">Confirm Strategy Call Details</h3>
               
               <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-700 space-y-1">
-                <p><strong>Date:</strong> June {selectedDate.split('-')[2]}, 2026</p>
+                <p><strong>Date:</strong> {selectedDate}</p>
                 <p><strong>Time Slot:</strong> {selectedTime}</p>
               </div>
 
@@ -276,6 +247,17 @@ Google Meet Link: https://meet.google.com/pin-sbjf-wfj
                   className="w-full bg-white border border-neutral-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-black text-black transition-colors"
                 />
                 {schedulerErrors.email && <p className="text-neutral-500 text-xs mt-1 font-bold">{schedulerErrors.email}</p>}
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-neutral-500 mb-1.5">Phone Number</label>
+                <input 
+                  type="tel" 
+                  placeholder="+1 (555) 000-0000"
+                  value={schedulerForm.phone}
+                  onChange={(e) => setSchedulerForm({...schedulerForm, phone: e.target.value})}
+                  className="w-full bg-white border border-neutral-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-black text-black transition-colors"
+                />
               </div>
 
               <div>
@@ -344,35 +326,85 @@ Google Meet Link: https://meet.google.com/pin-sbjf-wfj
           {/* Step 3: Success Screen */}
           {schedulerStep === 3 && (
             <div className="text-center py-8 space-y-6">
-              <div className="w-16 h-16 rounded-full bg-neutral-100 border border-neutral-300 text-black flex items-center justify-center mx-auto text-3xl font-extrabold shadow-sm">
+              <div className="w-16 h-16 rounded-full bg-green-50 border border-green-200 text-green-600 flex items-center justify-center mx-auto text-3xl font-extrabold shadow-sm">
                 ✓
               </div>
               <div>
-                <h3 className="text-2xl font-extrabold text-black">✅ Request sent!</h3>
-                <p className="text-neutral-700 text-sm mt-2 leading-relaxed font-medium">
-                  Check your email for Google Meet link: <a href="https://meet.google.com/pin-sbjf-wfj" target="_blank" rel="noreferrer" className="text-black font-bold underline hover:text-neutral-600 break-all">https://meet.google.com/pin-sbjf-wfj</a>
+                <h3 className="text-2xl font-extrabold text-black">Booking Confirmed!</h3>
+                <p className="text-neutral-600 text-sm mt-2 leading-relaxed font-medium">
+                  Your strategy call has been successfully scheduled.
                 </p>
               </div>
 
-              <div className="bg-neutral-50 border border-neutral-200 rounded-2xl p-4 max-w-md mx-auto text-left text-xs text-neutral-600 space-y-2.5">
-                <p><strong>Host:</strong> {personal.name}</p>
-                <p><strong>Scheduled Slot:</strong> June {selectedDate.split('-')[2]}, 2026 at {selectedTime}</p>
-                <p><strong>Google Meet Link:</strong> <a href={meetLink} target="_blank" rel="noreferrer" className="text-black font-bold underline hover:text-neutral-600 break-all">{meetLink}</a></p>
-                <p className="text-[10px] text-neutral-400 italic">Please join using the Google Meet link at the scheduled time.</p>
+              <div className="bg-neutral-50 border border-neutral-200 rounded-2xl p-5 max-w-md mx-auto text-left text-sm text-neutral-800 space-y-3">
+                <p className="flex justify-between border-b border-neutral-200 pb-2">
+                  <span className="text-neutral-500 font-bold uppercase tracking-wider text-xs">Host</span> 
+                  <span className="font-bold text-right">{personal.name} <br/><span className="text-xs font-normal text-neutral-500">(Software Developer)</span></span>
+                </p>
+                <p className="flex justify-between border-b border-neutral-200 pb-2">
+                  <span className="text-neutral-500 font-bold uppercase tracking-wider text-xs">Client</span> 
+                  <span className="font-bold text-right">{schedulerForm.name} <br/><span className="text-xs font-normal text-neutral-500">(Client)</span></span>
+                </p>
+                <p className="flex justify-between border-b border-neutral-200 pb-2 items-center">
+                  <span className="text-neutral-500 font-bold uppercase tracking-wider text-xs">Date</span> 
+                  <span className="font-bold">{selectedDate}</span>
+                </p>
+                <p className="flex justify-between pb-2 items-center">
+                  <span className="text-neutral-500 font-bold uppercase tracking-wider text-xs">Time</span> 
+                  <span className="font-bold">{selectedTime}</span>
+                </p>
               </div>
 
               <div className="max-w-md mx-auto">
+                <div className="p-3 bg-red-50 border border-red-200 rounded-xl mb-4 text-left">
+                  <p className="text-red-700 text-xs font-bold">
+                    Copy this link. Join at your scheduled time.
+                  </p>
+                  
+                  <div className="mt-2 flex items-center gap-2 p-2 bg-white rounded-lg border border-red-200">
+                    <input 
+                      type="text" 
+                      readOnly 
+                      value={meetLink}
+                      className="bg-transparent border-none outline-none text-[11px] text-neutral-600 font-mono flex-1 min-w-0"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a 
+                    href={meetLink}
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="flex-1 py-3 rounded-xl bg-blue-600 text-white font-bold text-sm hover:bg-blue-700 transition-colors shadow-sm flex items-center justify-center gap-2"
+                  >
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    Join Google Meet
+                  </a>
+                  <button
+                    type="button"
+                    onClick={handleCopyMeetLink}
+                    className="flex-1 py-3 rounded-xl bg-white border border-neutral-300 text-neutral-700 font-bold text-sm hover:bg-neutral-50 transition-colors shadow-sm flex items-center justify-center gap-2"
+                  >
+                    {copied ? "✓ Copied!" : "Copy Link"}
+                  </button>
+                </div>
+              </div>
+
+              <div className="max-w-md mx-auto pt-2">
                 <button
                   type="button"
                   onClick={() => {
                     onClose();
-                    setSchedulerForm({ name: "", email: "", notes: "", additionalMessage: "" });
+                    setSchedulerForm({ name: "", email: "", phone: "", notes: "", additionalMessage: "" });
                     setSelectedTime("");
                     setSchedulerStep(1);
                   }}
-                  className="w-full py-3 rounded-xl bg-black text-white font-bold text-sm hover:bg-neutral-800 shadow-sm"
+                  className="w-full py-3 rounded-xl bg-neutral-100 text-neutral-700 font-bold text-sm hover:bg-neutral-200 transition-colors"
                 >
-                  Done
+                  Close & Return
                 </button>
               </div>
             </div>
