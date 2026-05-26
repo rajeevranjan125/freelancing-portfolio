@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 export default function TiltCard({ children, className = "", ...props }) {
   const cardRef = useRef(null);

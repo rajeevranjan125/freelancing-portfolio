@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { PORTFOLIO_DATA } from '../portfolioData';
+import { useState } from 'react';
+import { PORTFOLIO_DATA } from '../../data/portfolioData';
 
-export default function ContactForm({ onSubmitSuccess }) {
+export default function ProjectContactForm({ onSubmitSuccess }) {
   const [contactStep, setContactStep] = useState(1);
   const [formData, setFormData] = useState({
     name: "",
@@ -13,22 +13,6 @@ export default function ContactForm({ onSubmitSuccess }) {
     message: ""
   });
   const [formErrors, setFormErrors] = useState({});
-
-  const getCalcStats = (users) => {
-    if (users <= 1000) {
-      return {
-        setup: "React SPA + Java Spring Boot (packaged monolith) + Managed MySQL (1GB RAM)"
-      };
-    } else if (users <= 10000) {
-      return {
-        setup: "S3 hosted React + Application Load Balancer + Spring Boot on EC2 with Auto-Scaling + Multi-AZ RDS"
-      };
-    } else {
-      return {
-        setup: "Next.js Static hosting + AWS EKS Cluster running Spring Boot pods + Redis cache + RDS replicas"
-      };
-    }
-  };
 
   const validateContactForm = () => {
     let errors = {};
