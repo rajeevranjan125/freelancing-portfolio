@@ -51,22 +51,7 @@ export default function HeroSection({ onOpenScheduler }) {
                 <div className="relative overflow-hidden flex items-center gap-2 px-4 py-1.5 rounded-xl bg-transparent border border-white/20 hover:border-white/40 text-white/90 transition-all duration-300 shadow-none hover:shadow-[0_8px_24px_rgba(255,255,255,0.05)] hover:-translate-y-0.5 hover:scale-[1.03] cursor-default group select-none">
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-emerald-500/10 to-orange-500/10 pointer-events-none z-0" />
                   <div className="relative z-10 flex items-center gap-2">
-                    <div className="flex items-center gap-1.5">
-                      <svg className="w-5 h-5 text-[#f97316] filter drop-shadow-[0_0_4px_rgba(249,115,22,0.3)] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12.5 2c-.6-.7-1.3-.2-1.1.6.3 1.1.9 1.4.9 2.1s-.6 1.1-1 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                        <path d="M15 1c-.6-.7-1.3-.2-1.1.6.3 1.1.9 1.4.9 2.1s-.6 1.1-1 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                        <path d="M7 8h10c0 0 1 3.5-1 6s-6 2.5-8 0S7 8 7 8z" fill="currentColor" opacity="0.85" />
-                        <path d="M16.5 9.5c1.5 0.5 2.5 1.5 2.5 2.5s-1 2-2.5 2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-                        <path d="M5 17.5c4-1.5 10-1.5 14 0 1 0.4 1 1-1 1.2-3.5 0.5-8.5 0.5-12 0-2-0.2-2-0.8-1-1.2z" fill="currentColor" />
-                      </svg>
-                      <svg className="w-4.5 h-4.5 text-[#6DB33F] filter drop-shadow-[0_0_4px_rgba(109,179,63,0.3)] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="11" fill="#6DB33F" />
-                        <path d="M12 4.5c-4.1 0-7.5 3.4-7.5 7.5 0 2.1.8 4 2.2 5.3l10.6-10.6C16 5.3 14.1 4.5 12 4.5zm5.3 3.8L6.7 18.9c1.3 1.4 3.2 2.2 5.3 2.2 4.1 0 7.5-3.4 7.5-7.5 0-2.1-.8-4-2.2-5.3z" fill="white" />
-                        <path d="M12 4.5c-2.5 3-2.5 7.5 0 10.5 2.5-3 2.5-7.5 0-10.5z" fill="#6DB33F" />
-                        <circle cx="6.5" cy="17.5" r="1.2" fill="white" />
-                      </svg>
-                    </div>
-                    <span className="font-semibold text-xs tracking-wide transition-colors duration-300">Java Spring Boot</span>
+                    <span className="font-semibold text-xs tracking-wide transition-colors duration-300 whitespace-nowrap">Java Spring Boot</span>
                   </div>
                 </div>
 
@@ -80,7 +65,7 @@ export default function HeroSection({ onOpenScheduler }) {
                       <ellipse cx="12" cy="12" rx="10" ry="4" stroke="currentColor" strokeWidth="1.5" transform="rotate(120 12 12)" />
                       <circle cx="12" cy="12" r="1.5" fill="currentColor" />
                     </svg>
-                    <span className="font-semibold text-xs tracking-wide">React</span>
+                    <span className="font-semibold text-xs tracking-wide whitespace-nowrap">React</span>
                   </div>
                 </div>
 
@@ -88,14 +73,7 @@ export default function HeroSection({ onOpenScheduler }) {
                 <div className="relative overflow-hidden flex items-center gap-2 px-4 py-1.5 rounded-xl bg-transparent border border-white/20 hover:border-white/40 text-white/90 transition-all duration-300 shadow-none hover:shadow-[0_8px_24px_rgba(255,255,255,0.05)] hover:-translate-y-0.5 hover:scale-[1.03] cursor-default group select-none">
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 pointer-events-none z-0" />
                   <div className="relative z-10 flex items-center gap-2">
-                    <svg className="w-4.5 h-4.5 text-[#087EA4] filter drop-shadow-[0_0_4px_rgba(8,126,164,0.3)] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <rect x="5" y="3" width="14" height="18" rx="2.5" />
-                      <path d="M12 17h.01M9 6h6" strokeLinecap="round" />
-                      <ellipse cx="12" cy="10" rx="3.5" ry="1.4" transform="rotate(30 12 10)" />
-                      <ellipse cx="12" cy="10" rx="3.5" ry="1.4" transform="rotate(90 12 10)" />
-                      <ellipse cx="12" cy="10" rx="3.5" ry="1.4" transform="rotate(150 12 10)" />
-                    </svg>
-                    <span className="font-semibold text-xs tracking-wide">React Native</span>
+                    <span className="font-semibold text-xs tracking-wide whitespace-nowrap">React Native</span>
                   </div>
                 </div>
 
@@ -107,7 +85,7 @@ export default function HeroSection({ onOpenScheduler }) {
                       <ellipse cx="12" cy="5" rx="8" ry="2.5" />
                       <path d="M4 5v14c0 1.38 3.58 2.5 8 2.5s8-1.12 8-2.5V5M4 12c0 1.38 3.58 2.5 8 2.5s8-1.12 8-2.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                    <span className="font-semibold text-xs tracking-wide">MySQL</span>
+                    <span className="font-semibold text-xs tracking-wide whitespace-nowrap">MySQL</span>
                   </div>
                 </div>
               </div>
