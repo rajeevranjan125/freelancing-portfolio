@@ -304,7 +304,7 @@ export default function ServicesSection() {
                   <div className="w-3.5 h-3.5 rounded-full bg-[#27c93f] border border-[#1aab29] cursor-pointer" />
                 </div>
                 <div className="text-xs md:text-sm font-semibold text-[#cdd6f4] bg-black/35 px-3 py-1 rounded-md">
-                  💼 Business Center / Services / Web Applications
+                  Business Center / Services / Web Applications
                 </div>
                 <div className="w-14" />
               </div>
@@ -430,7 +430,7 @@ export default function ServicesSection() {
                   <div className="w-3.5 h-3.5 rounded-full bg-[#27c93f] border border-[#1aab29] cursor-pointer" />
                 </div>
                 <div className="text-xs md:text-sm font-semibold text-[#cdd6f4] bg-black/35 px-3 py-1 rounded-md">
-                  💼 Business Center / Services / Mobile Applications
+                  Business Center / Services / Mobile Applications
                 </div>
                 <div className="w-14" />
               </div>
@@ -524,7 +524,7 @@ export default function ServicesSection() {
                   <div className="w-3.5 h-3.5 rounded-full bg-[#27c93f] border border-[#1aab29] cursor-pointer" />
                 </div>
                 <div className="text-xs md:text-sm font-semibold text-[#cdd6f4] bg-black/35 px-3 py-1 rounded-md">
-                  💼 Business Center / Services / Secure Systems & APIs
+                  Business Center / Services / Secure Systems & APIs
                 </div>
                 <div className="w-14" />
               </div>
@@ -631,7 +631,7 @@ export default function ServicesSection() {
                   <div className="w-3.5 h-3.5 rounded-full bg-[#27c93f] border border-[#1aab29] cursor-pointer" />
                 </div>
                 <div className="text-xs md:text-sm font-semibold text-[#cdd6f4] bg-black/35 px-3 py-1 rounded-md">
-                  💼 Business Center / Services / Smart Server Scaling
+                  Business Center / Services / Smart Server Scaling
                 </div>
                 <div className="w-14" />
               </div>
