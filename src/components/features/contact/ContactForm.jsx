@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PORTFOLIO_DATA } from '../portfolioData';
+import { PORTFOLIO_DATA } from '../../../data/portfolioData';
 
 export default function ContactForm({ onSubmitSuccess }) {
   const [contactStep, setContactStep] = useState(1);
