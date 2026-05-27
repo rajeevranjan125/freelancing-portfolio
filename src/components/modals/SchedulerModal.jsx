@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function SchedulerModal({ personal, onClose }) {
   const [schedulerStep, setSchedulerStep] = useState(1); // 1: Date/Time, 2: Details, 3: Success
@@ -69,10 +69,13 @@ export default function SchedulerModal({ personal, onClose }) {
     setIsSubmitting(true);
     setSubmitError("");
 
-    let formattedDate = selectedDate;
-    try {
-      formattedDate = new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-    } catch(e) {}
+    const formattedDate = (() => {
+      try {
+        return new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      } catch {
+        return selectedDate;
+      }
+    })();
     const submittedAt = new Date().toLocaleString('en-US');
 
     // Construct Web3Forms payload with specific ordered fields
