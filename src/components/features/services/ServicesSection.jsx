@@ -16,7 +16,7 @@ export default function ServicesSection() {
     setPerfScore(0);
     setSeoScore(0);
     setAccScore(0);
-    
+
     let currentPerf = 0;
     let currentSeo = 0;
     let currentAcc = 0;
@@ -65,7 +65,7 @@ export default function ServicesSection() {
   const [syncFeedback, setSyncFeedback] = useState('');
 
   const handleToggleTask = (id) => {
-    setOfflineTasks(prev => 
+    setOfflineTasks(prev =>
       prev.map(t => {
         if (t.id === id) {
           const nextStatus = t.status === 'completed' ? 'pending' : 'completed';
@@ -205,9 +205,9 @@ export default function ServicesSection() {
       const rect = element.getBoundingClientRect();
       const scrollableDist = rect.height - window.innerHeight;
       const scrolled = -rect.top;
-      
+
       const progress = Math.min(Math.max(scrolled / scrollableDist, 0), 1);
-      
+
       // Divide progress into discrete activation thresholds:
       // Card 0: 0.0 -> 0.25
       // Card 1: 0.25 -> 0.55
@@ -271,10 +271,10 @@ export default function ServicesSection() {
   return (
     /* Parent track container defining pinned scroll depth (360vh provides excellent scroll buffer) */
     <section ref={trackRef} id="services" className="relative lg:h-[360vh] bg-transparent border-t border-neutral-200 text-black scroll-mt-20">
-      
+
       {/* Pinned Sticky container locking the screen viewport (slate body color prevents white page flash) */}
       <div className="relative lg:sticky lg:top-0 lg:h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-[#f5f5f7] py-16 lg:py-0">
-        
+
         <ScrollReveal>
           <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-10 shrink-0 px-6">
             <h2 className="text-3xl md:text-5xl font-extrabold text-black mb-3 tracking-tight">
@@ -288,9 +288,9 @@ export default function ServicesSection() {
 
         {/* Absolute Window Overlay Stack */}
         <div className="relative w-full max-w-7xl px-6 min-h-[580px] lg:h-[70vh] flex flex-col lg:block">
-          
+
           {/* WINDOW 0: Web Applications */}
-          <div 
+          <div
             ref={cardRef0}
             className="relative lg:absolute lg:inset-0 w-full h-full flex items-center justify-center transition-all duration-700 ease-out origin-center mb-12 lg:mb-0"
             style={getCardStyles(0)}
@@ -416,7 +416,7 @@ export default function ServicesSection() {
           </div>
 
           {/* WINDOW 1: Mobile Apps */}
-          <div 
+          <div
             ref={cardRef1}
             className="relative lg:absolute lg:inset-0 w-full h-full flex items-center justify-center transition-all duration-700 ease-out origin-center mb-12 lg:mb-0"
             style={getCardStyles(1)}
@@ -510,7 +510,7 @@ export default function ServicesSection() {
           </div>
 
           {/* WINDOW 2: Secure Systems & APIs */}
-          <div 
+          <div
             ref={cardRef2}
             className="relative lg:absolute lg:inset-0 w-full h-full flex items-center justify-center transition-all duration-700 ease-out origin-center mb-12 lg:mb-0"
             style={getCardStyles(2)}
@@ -617,7 +617,7 @@ export default function ServicesSection() {
           </div>
 
           {/* WINDOW 3: Smart Server Scaling */}
-          <div 
+          <div
             ref={cardRef3}
             className="relative lg:absolute lg:inset-0 w-full h-full flex items-center justify-center transition-all duration-700 ease-out origin-center mb-12 lg:mb-0"
             style={getCardStyles(3)}

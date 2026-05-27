@@ -14,7 +14,7 @@ export default function HeroSection({ onOpenScheduler }) {
   return (
     <>
       {/* 1. Main Hero Banner (Aspect Ratio Container on Desktop) */}
-      <section className="relative w-full overflow-hidden bg-black text-white flex items-center justify-center lg:aspect-[2160/612] py-16 lg:py-0">
+      <section className="relative w-full overflow-hidden bg-black text-white flex items-center justify-center lg:aspect-[2160/612] py-16 lg:py-0 mb-12 lg:mb-16">
         {/* Background Image with High-End Overlay Gradients */}
         <div className="absolute inset-0 z-0 select-none pointer-events-none">
           <img 
@@ -168,19 +168,19 @@ export default function HeroSection({ onOpenScheduler }) {
         </div>
       </section>
 
-      {/* 2. Hero Supplemental Content (Stats & Quote - Styled beautifully as a seamless continuation of the hero) */}
-      <section className="bg-black text-white pt-10 pb-16 lg:py-16 border-b border-neutral-800">
+      {/* 2. Hero Supplemental Content (Stats & Quote - Styled beautifully in off-white to match the portfolio theme) */}
+      <section className="bg-[#f5f5f7] text-black pt-10 pb-16 lg:py-16 border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal delay={600}>
-            <div className="p-8 md:p-10 rounded-3xl max-w-3xl mx-auto bg-neutral-900/35 border border-white/10 shadow-[0_24px_50px_rgba(0,0,0,0.5)] relative overflow-hidden text-center backdrop-blur-xl mb-12">
+            <div className="p-8 md:p-10 rounded-3xl max-w-3xl mx-auto bg-white border border-neutral-200 shadow-sm relative overflow-hidden text-center mb-12">
               {/* Decorative watermark double quote */}
-              <div className="absolute -top-3 -left-3 text-white/5 pointer-events-none select-none">
+              <div className="absolute -top-3 -left-3 text-neutral-100 pointer-events-none select-none">
                 <svg className="w-20 h-20 fill-current" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                 </svg>
               </div>
               
-              <p className="text-neutral-100/90 text-base md:text-lg font-medium leading-relaxed italic relative z-10 tracking-wide">
+              <p className="text-neutral-700 text-base md:text-lg font-medium leading-relaxed italic relative z-10 tracking-wide">
                 "{PORTFOLIO_DATA.personal.title}. I help startups and businesses build scalable web & mobile applications with enterprise-grade backend. I optimize cloud costs so you pay only for what you use."
               </p>
             </div>
@@ -189,24 +189,24 @@ export default function HeroSection({ onOpenScheduler }) {
           {/* Above-the-fold stats dashboard block */}
           <ScrollReveal delay={650}>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-              <div className="relative overflow-hidden text-center p-5 rounded-2xl bg-transparent border border-white/20 hover:border-white/35 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] group">
-                <span className="text-2xl md:text-3xl font-extrabold text-white block font-mono tracking-tight transition-all duration-300 drop-shadow-[0_0_6px_rgba(255,255,255,0.1)] group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]">{PORTFOLIO_DATA.personal.stats.experience}</span>
-                <span className="text-[10px] text-neutral-300 font-bold uppercase tracking-wider block mt-2 transition-colors duration-300 group-hover:text-white">Experience</span>
+              <div className="relative overflow-hidden text-center p-5 rounded-2xl bg-white border border-neutral-200 shadow-sm transition-all duration-300 hover:border-neutral-400 hover:-translate-y-0.5 hover:scale-[1.01] group">
+                <span className="text-2xl md:text-3xl font-extrabold text-black block font-mono tracking-tight transition-all duration-300">{PORTFOLIO_DATA.personal.stats.experience}</span>
+                <span className="text-[10px] text-neutral-500 font-bold uppercase tracking-wider block mt-2 transition-colors duration-300 group-hover:text-black">Experience</span>
               </div>
               
-              <div className="relative overflow-hidden text-center p-5 rounded-2xl bg-transparent border border-white/20 hover:border-white/35 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] group">
-                <span className="text-2xl md:text-3xl font-extrabold text-white block font-mono tracking-tight transition-all duration-300 drop-shadow-[0_0_6px_rgba(255,255,255,0.1)] group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]">{PORTFOLIO_DATA.personal.stats.projects}</span>
-                <span className="text-[10px] text-neutral-300 font-bold uppercase tracking-wider block mt-2 transition-colors duration-300 group-hover:text-white">Projects Delivered</span>
+              <div className="relative overflow-hidden text-center p-5 rounded-2xl bg-white border border-neutral-200 shadow-sm transition-all duration-300 hover:border-neutral-400 hover:-translate-y-0.5 hover:scale-[1.01] group">
+                <span className="text-2xl md:text-3xl font-extrabold text-black block font-mono tracking-tight transition-all duration-300">{PORTFOLIO_DATA.personal.stats.projects}</span>
+                <span className="text-[10px] text-neutral-500 font-bold uppercase tracking-wider block mt-2 transition-colors duration-300 group-hover:text-black">Projects Delivered</span>
               </div>
               
-              <div className="relative overflow-hidden text-center p-5 rounded-2xl bg-transparent border border-white/20 hover:border-white/35 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] group">
-                <span className="text-2xl md:text-3xl font-extrabold text-white block font-mono tracking-tight transition-all duration-300 drop-shadow-[0_0_6px_rgba(255,255,255,0.1)] group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]">{PORTFOLIO_DATA.personal.stats.clients}</span>
-                <span className="text-[10px] text-neutral-300 font-bold uppercase tracking-wider block mt-2 transition-colors duration-300 group-hover:text-white">Clients Satisfied</span>
+              <div className="relative overflow-hidden text-center p-5 rounded-2xl bg-white border border-neutral-200 shadow-sm transition-all duration-300 hover:border-neutral-400 hover:-translate-y-0.5 hover:scale-[1.01] group">
+                <span className="text-2xl md:text-3xl font-extrabold text-black block font-mono tracking-tight transition-all duration-300">{PORTFOLIO_DATA.personal.stats.clients}</span>
+                <span className="text-[10px] text-neutral-500 font-bold uppercase tracking-wider block mt-2 transition-colors duration-300 group-hover:text-black">Clients Satisfied</span>
               </div>
               
-              <div className="relative overflow-hidden text-center p-5 rounded-2xl bg-transparent border border-white/20 hover:border-white/35 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] group">
-                <span className="text-2xl md:text-3xl font-extrabold text-white block font-mono tracking-tight transition-all duration-300 drop-shadow-[0_0_6px_rgba(255,255,255,0.1)] group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]">{PORTFOLIO_DATA.personal.stats.rating}</span>
-                <span className="text-[10px] text-neutral-300 font-bold uppercase tracking-wider block mt-2 transition-colors duration-300 group-hover:text-white">Average Rating</span>
+              <div className="relative overflow-hidden text-center p-5 rounded-2xl bg-white border border-neutral-200 shadow-sm transition-all duration-300 hover:border-neutral-400 hover:-translate-y-0.5 hover:scale-[1.01] group">
+                <span className="text-2xl md:text-3xl font-extrabold text-black block font-mono tracking-tight transition-all duration-300">{PORTFOLIO_DATA.personal.stats.rating}</span>
+                <span className="text-[10px] text-neutral-500 font-bold uppercase tracking-wider block mt-2 transition-colors duration-300 group-hover:text-black">Average Rating</span>
               </div>
             </div>
           </ScrollReveal>
