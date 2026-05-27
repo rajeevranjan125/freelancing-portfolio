@@ -137,9 +137,11 @@ export default function SchedulerModal({ personal, onClose }) {
         {/* Left Host Column */}
         <div className="w-full md:w-5/12 p-6 md:p-8 bg-neutral-50 border-b md:border-b-0 md:border-r border-neutral-200 flex flex-col justify-between flex-shrink-0 text-black">
           <div>
-            <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center font-bold text-white shadow-sm mb-6">
-              RP
-            </div>
+            <img 
+              src={personal.avatar} 
+              alt={personal.name} 
+              className="w-12 h-12 rounded-xl object-cover shadow-sm mb-6 border border-neutral-200"
+            />
             <span className="text-[10px] uppercase font-bold text-neutral-500 tracking-wider">Strategy Host</span>
             <h3 className="text-xl font-bold text-black mt-1">{personal.name}</h3>
             <h4 className="text-sm font-semibold text-black mt-4 flex items-center gap-2">
@@ -356,7 +358,7 @@ export default function SchedulerModal({ personal, onClose }) {
               </div>
 
               <div className="max-w-md mx-auto">
-                <div className="p-3 bg-red-50 border border-red-200 rounded-xl mb-4 text-left">
+                <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-left mb-4">
                   <p className="text-red-700 text-xs font-bold">
                     Copy this link. Join at your scheduled time.
                   </p>

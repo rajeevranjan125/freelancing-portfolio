@@ -2,6 +2,7 @@ export const PORTFOLIO_DATA = {
   personal: {
     name: "Rajeev Ranjan Prasad",
     role: "Software Developer",
+    avatar: "https://res.cloudinary.com/dyy8sqeh7/image/upload/v1779719415/notionists-1779719391796_dx82bd.png",
     title: "Software Developer with 5+ years of experience delivering projects to clients",
     availability: "Available for New Projects",
     timezone: "IST (UTC+5:30) / Bengaluru, India",
