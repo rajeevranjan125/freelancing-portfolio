@@ -1,23 +1,21 @@
-import { useState, useEffect } from 'react';
-
-const INITIAL_DEMO_LOGS = [
-  "[SYSTEM] Allocating virtualization container...",
-  "[SYSTEM] Connecting to mock database shard...",
-  "[SYSTEM] Injecting Spring Security JWT headers..."
-];
-
-function getInitialActiveUsers(project) {
-  return parseInt(project.users.replace(/[^0-9]/g, '')) || 100;
-}
+import React, { useState, useEffect } from 'react';
 
 export default function SimulatorModal({ project, onClose }) {
-  const [demoLoading, setDemoLoading] = useState(true);
-  const [demoLogs, setDemoLogs] = useState(INITIAL_DEMO_LOGS);
-  const [demoActiveUsers, setDemoActiveUsers] = useState(() => getInitialActiveUsers(project));
-  const [demoMetricSec, setDemoMetricSec] = useState(12);
+  const [demoLoading, setDemoLoading] = useState(false);
+  const [demoLogs, setDemoLogs] = useState([]);
+  const [demoActiveUsers, setDemoActiveUsers] = useState(0);
+  const [demoMetricSec, setDemoMetricSec] = useState(0);
 
   useEffect(() => {
     if (!project) return;
+    setDemoLoading(true);
+    setDemoLogs([
+      "[SYSTEM] Allocating virtualization container...",
+      "[SYSTEM] Connecting to mock database shard...",
+      "[SYSTEM] Injecting Spring Security JWT headers..."
+    ]);
+    setDemoActiveUsers(parseInt(project.users.replace(/[^0-9]/g, '')) || 100);
+    setDemoMetricSec(12);
 
     const t1 = setTimeout(() => {
       setDemoLoading(false);
@@ -43,7 +41,7 @@ export default function SimulatorModal({ project, onClose }) {
         return next;
       });
       setDemoActiveUsers(prev => Math.round(prev + (Math.random() * 4 - 2)));
-      setDemoMetricSec(Math.floor(Math.random() * 6 + 8));
+      setDemoMetricSec(prev => Math.floor(Math.random() * 6 + 8));
     }, 2200);
 
     return () => {
