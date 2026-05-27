@@ -14,19 +14,19 @@ export default function HeroSection({ onOpenScheduler }) {
   return (
     <>
       {/* 1. Main Hero Banner (Aspect Ratio Container on Desktop) */}
-      <section className="relative w-full overflow-hidden bg-black text-white flex items-center justify-center lg:aspect-[2160/612] py-16 lg:py-0 mb-12 lg:mb-16">
+      <section className="relative w-full overflow-hidden bg-black text-white flex flex-col lg:flex-row items-center justify-center lg:aspect-[2160/612] mb-12 lg:mb-16 pb-12 lg:pb-0">
         {/* Background Image with High-End Overlay Gradients */}
-        <div className="absolute inset-0 z-0 select-none pointer-events-none">
+        <div className="relative lg:absolute w-full aspect-[2160/612] lg:aspect-auto lg:inset-0 z-0 select-none pointer-events-none">
           <img 
             src="https://www.generalintelligencecompany.com/images/footer-2.png" 
             alt="Modern generative tech grid background" 
             className="w-full h-full object-cover select-none pointer-events-none"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/40 to-black lg:from-black/40 lg:via-black/20 lg:to-black/60" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.14),transparent_40%)]" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full lg:py-6">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full mt-4 lg:mt-0 lg:py-6">
           <div className="text-center max-w-4xl mx-auto">
             <ScrollReveal>
               <div className="inline-flex items-center gap-2.5 px-4.5 py-1.5 rounded-full bg-transparent border border-white/20 text-xs md:text-sm font-semibold text-white/90 mb-5 lg:mb-4 select-none">
